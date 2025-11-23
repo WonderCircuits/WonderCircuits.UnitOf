@@ -11,13 +11,12 @@ namespace WonderCircuits.UnitOf
     public class Temperature : UnitConverterBase
     {
         #region Constants
-        internal const int C = 1; //Celsius 
-        internal const int F = 2; //Fahrenheit 
-        internal const int K = 3; //kelvin 
-        internal const int R = 4; //Rankine 
-        internal const int RE = 5;//Reaumur
+        internal const double C = 1; //Celsius 
+        internal const double F = 2; //Fahrenheit 
+        internal const double K = 3; //kelvin 
+        internal const double R = 4; //Rankine 
+        internal const double RE = 5;//Reaumur
         #endregion
-
 
         #region From Methods
         public Temperature FromCelsius(double v) { return From(v, C, "C"); }
@@ -34,15 +33,30 @@ namespace WonderCircuits.UnitOf
         #endregion
 
         #region To Methods
-        public double ToCelsius() { return c(C); }
-        public double ToFahrenheit() { return c(F); }
-        public double ToKelvin() { return c(K); }
-        public double ToRankine() { return c(R); }
-        public double ToReaumur() { return c(RE); }
+        public double ToCelsius() { return To(C); }
+        public double ToFahrenheit() { return To(F); }
+        public double ToKelvin() { return To(K); }
+        public double ToRankine() { return To(R); }
+        public double ToReaumur() { return To(RE); }
 
+        private double To(double t)
+        {
+            //1. 统一转换为Celsius单位。
+            var cel = ToCelsius(Varaibles.Value, Varaibles.MeasumentValue);
+
+            //2. 根据需要转换的单位进行换算。
+            switch (t)
+            {
+                case F: return (cel * 1.8) + 32;
+                case K: return cel + 273.15;
+                case R: return (cel + 273.15) * 1.8;
+                case RE: return cel * 0.8;
+                default: return cel;
+            }
+        }
         private double ToCelsius(double v, double t)
         {
-            switch ((int)t)
+            switch (t)
             {
                 case F: return (v-32) / 1.8;
                 case K: return v - 273.15;
@@ -50,23 +64,6 @@ namespace WonderCircuits.UnitOf
                 case RE: return v * 1.25;
                 default: return v;
             }
-        }
-
-        private double FromCelsiusToType(double v, double t)
-        {
-            switch ((int)t)
-            {
-                case F: return (v * 1.8) + 32;
-                case K: return v + 273.15;
-                case R: return (v + 273.15) * 1.8;
-                case RE: return v * 0.8;
-                default: return v;
-            }
-        }
-
-        private double c(double t)
-        {
-            return FromCelsiusToType(ToCelsius(Varaibles.Value, Varaibles.FromConstant), t);
         }
         #endregion
     }
