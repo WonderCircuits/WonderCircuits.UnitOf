@@ -31,7 +31,8 @@ namespace WonderCircuits.UnitOf
         internal static readonly double MILG = 1e3;               //Milligram
         internal static readonly double NG = 1e9;                 //Nanogram
         internal static readonly double MOZ = 4e-2;               //Ounce (Metric)
-        internal static readonly double USOZ = 1/28.349523125;    //Ounce (US)
+        //internal static readonly double USOZ = 1/28.349523125;    //Ounce (US) 
+        internal static readonly double USOZ = 1 / 28.3495;    //Ounce (US)
         internal static readonly double PEG = 1e-15;              //Petagram
         internal static readonly double PG = 1e12;                //Picogram
         internal static readonly double LB = 1/453.592;           //Pound 
