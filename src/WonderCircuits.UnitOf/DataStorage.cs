@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// double foo = new UnitOf.DataStorage().FromMegabytes(1.25)ToKilobytes(); //One line conversion from 1.25 Megabytes to Kilobytes
     /// </summary>
-    [Serializable]
     public class DataStorage : UnitConverterBase
     {
         #region Constants

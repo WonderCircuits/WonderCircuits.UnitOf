@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -8,7 +9,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Volume().FromLiters(1.25).ToCubicMeters(); //One line conversion from 1.25 Liters to CubicMeters
     /// </summary>
-    [Serializable]
     public class Volume : UnitConverterBase
     {
         #region Constants

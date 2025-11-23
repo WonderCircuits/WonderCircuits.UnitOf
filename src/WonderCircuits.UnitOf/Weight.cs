@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Weight().FromGrams(1.25).ToPounds(); //One line conversion from 1.25 Grams to Pounds
     /// </summary>
-    [Serializable]
     public class Weight : UnitConverterBase
     {
         #region Constants

@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Energy().FromJoules(1.25).ToWattSeconds(); //One line conversion from 1.25 Joules to WattSeconds
     /// </summary>
-    [Serializable]
     public class Energy : UnitConverterBase
     {
         #region Constants

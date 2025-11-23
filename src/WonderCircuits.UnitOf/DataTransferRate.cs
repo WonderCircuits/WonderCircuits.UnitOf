@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.DataTransferRate().FromMegabytesPerSecond(1.25).ToKilobytesPerSecond(); //One line conversion from 1.25 MegabytesPerSecond to KilobytesPerSecond
     /// </summary>
-    [Serializable]
     public class DataTransferRate : UnitConverterBase
     {
         #region Constants

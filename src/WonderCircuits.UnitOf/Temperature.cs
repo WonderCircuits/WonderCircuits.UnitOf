@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Temperature().FromCelsius(1.25).ToFahrenheit(); //One line conversion from 1.25 Celsius to Fahrenheit
     /// </summary>
-    [Serializable]
     public class Temperature : UnitConverterBase
     {
         #region Constants

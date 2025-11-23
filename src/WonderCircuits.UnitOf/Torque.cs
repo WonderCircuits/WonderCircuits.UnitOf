@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Torque().FromNewtonMeters(1.25).ToGramMeters(); //One line conversion from 1.25 NewtonMeters to GramMeters
     /// </summary>
-    [Serializable]
     public class Torque : UnitConverterBase
     {
         #region Constants

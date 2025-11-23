@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Speed().FromMilesPerHour(1.25).ToKilometersPerHour(); //One line conversion from 1.25 MilesPerHour to KilometersPerHour
     /// </summary>
-    [Serializable]
     public class Speed : UnitConverterBase
     {
         #region Constants

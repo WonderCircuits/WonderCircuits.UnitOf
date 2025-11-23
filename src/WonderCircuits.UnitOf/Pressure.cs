@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Pressure().FromPascals(1.25).ToKSI(); //One line conversion from 1.25 Pascals to KSI
     /// </summary>
-    [Serializable]
     public class Pressure : UnitConverterBase
     {
         #region Constants

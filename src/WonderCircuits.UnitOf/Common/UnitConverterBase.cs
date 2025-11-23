@@ -7,24 +7,22 @@ namespace WonderCircuits.UnitOf.Common
     /// </summary>
     public abstract class UnitConverterBase
     {
-        protected UnitConverterVaribles Varaibles { get; private set; } = new UnitConverterVaribles(); //Instantiate class A.cs for variables needed to perform conversions.
+        public UnitConverterBase()
+        {
+
+        }
+
+        protected UnitConverterVaribles Varaibles { get; private set; } 
 
         /// <summary>
         /// Stores the needed values to do conversions of the measurement.
         /// This overload of the method is used in "From" methods in every measurement class other than Anything() and DataType().
         /// </summary>
-        /// <typeparam name="T">Class context of measurement passed (usually "this" is passed from caller).</typeparam>
         /// <param name="t">Class context of measurement passed (usually "this" is passed from caller).</param>
         /// <param name="v">User passed "From" value (double).</param>
         /// <param name="tt">Struct readonly constant value representing the "From" method of the measurement used.</param>
         /// <param name="ty">String value of the struct readonly constant value representing the "From" method of the measurement used.</param>
         /// <returns>class context passed in so variable like "UnitOf.Length len" can be used as the variable type</returns>
-        protected T Store<T>(T t, double v, double tt, string ty)
-        {
-            Varaibles = new UnitConverterVaribles(v, tt, ty);
-            return t;
-        }
-
         protected void Store(double v, double tt, string ts)
         {
             Varaibles = new UnitConverterVaribles(v, tt, ts);

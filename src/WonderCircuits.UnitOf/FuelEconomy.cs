@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.FuelEconomy().FromMetersPerCubicMeter(1.25).ToMetersPerLiter(); //One line conversion from 1.25 MetersPerCubicMeter to MetersPerLiter
     /// </summary>
-    [Serializable]
     public class FuelEconomy : UnitConverterBase
     {
         #region Constants

@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.ElectricCharge().FromCoulombs(1.25).ToAmpereHours(); //One line conversion from 1.25 Coulombs to AmpereHours
     /// </summary>
-    [Serializable]
     public class ElectricCharge : UnitConverterBase
     {
         #region Constants

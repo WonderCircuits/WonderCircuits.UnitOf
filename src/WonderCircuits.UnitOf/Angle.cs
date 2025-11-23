@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Angle().FromDegrees(1.25).ToRadians(); //One line conversion from 1.25 Degrees to Radians
     /// </summary>
-    [Serializable]
     public class Angle : UnitConverterBase
     {
         #region Constants

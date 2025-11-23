@@ -8,16 +8,6 @@ namespace WonderCircuits.UnitOf.Common
     public struct UnitConverterVaribles
     {
         /// <summary>
-        /// Empty constructor only called when instantiating from class B.cs
-        /// </summary>
-        public UnitConverterVaribles()
-        {
-            Value = -1;
-            FromConstant = -1;
-            FromType = string.Empty;
-        }
-
-        /// <summary>
         /// Only used in class B.cs when measurement "From" method only converts numbers.
         /// All measurements other than DataType use this constructor.
         /// </summary>

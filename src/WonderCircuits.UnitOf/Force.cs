@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Force().FromNewtons(1.25).ToPoundForces(); //One line conversion from 1.25 Newtons to PoundForces
     /// </summary>
-    [Serializable]
     public class Force : UnitConverterBase
     {
         #region Constants

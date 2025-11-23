@@ -1,3 +1,4 @@
+using System;
 using WonderCircuits.UnitOf.Common;
 
 namespace WonderCircuits.UnitOf
@@ -7,7 +8,6 @@ namespace WonderCircuits.UnitOf
     /// 
     /// Ex: double foo = new UnitOf.Time().FromMinutes(1.25).ToHours(); //One line conversion from 1.25 Minutes to Hours
     /// </summary>
-    [Serializable]
     public class Time : UnitConverterBase
     {
         #region Constants
