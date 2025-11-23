@@ -126,7 +126,7 @@ namespace WonderCircuits.UnitOf
 
         private double To(double t)
         {
-            return Conversion(t, Varaibles.MeasumentValue, false);
+            return Conversion(t, false);
         }
 
         #endregion

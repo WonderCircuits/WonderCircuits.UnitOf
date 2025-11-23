@@ -124,9 +124,9 @@ namespace WonderCircuits.UnitOf
         public double ToTerametersPerSecondSquared() { return To(TS); }
         public double ToYardsPerSecondSquared() { return To(YDS); }
 
-        private double To(double to)
+        private double To(double t)
         {
-            return Conversion(to, Varaibles.MeasumentValue, false);
+            return Conversion(t, false);
         }
         #endregion
 

@@ -27,13 +27,13 @@ namespace WonderCircuits.UnitOf.Common
         /// Used by every measurement class that converts just numbers (Anything() and DataType() do not apply here).
         /// Method performs the full conversion of taking the user defined "From" value and converting it into the user desired "To" value.
         /// </summary>
-        /// <param name="a">Struct readonly constant value of "To" unit. Unit being converted into conversion constant value.</param>
-        /// <param name="b">Struct readonly constant value of "From" unit. Unit starting from conversion constant value.</param>
+        /// <param name="to">Struct readonly constant value of "To" unit. Unit being converted into conversion constant value.</param>
         /// <param name="isMultiplyThenDivide">Multiply then divide conversion algorithm, false will divide then multiply when converting "To"</param>
         /// <returns>Finished conversion. "from" converted into "to" value.</returns>
-        protected double Conversion(double a, double b, bool isMultiplyThenDivide)
+        protected double Conversion(double to, bool isMultiplyThenDivide)
         {
-            return MultiplyOrDivide(MultiplyOrDivide(Varaibles.Value, a, isMultiplyThenDivide), b, !isMultiplyThenDivide);
+            var fromValue = MultiplyOrDivide(Varaibles.Value, to, isMultiplyThenDivide);
+            return MultiplyOrDivide(fromValue, Varaibles.MeasumentValue, !isMultiplyThenDivide);
         }
 
         /// <summary>

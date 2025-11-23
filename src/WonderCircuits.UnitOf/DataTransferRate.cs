@@ -175,13 +175,9 @@ namespace WonderCircuits.UnitOf
         public double ToUSBs3_0() { return To(USB3); }
         public double ToUSBs3_1() { return To(USB31); }
 
-        /// <summary>
-        /// Method to perform all conversions within DataTransferRate class.
-        /// All "To" methods within DataTransferRate use this method.
-        /// </summary>
         private double To(double t)
         {
-            return Conversion(t, Varaibles.MeasumentValue, true);
+            return Conversion(t, true);
         }
         #endregion
     }

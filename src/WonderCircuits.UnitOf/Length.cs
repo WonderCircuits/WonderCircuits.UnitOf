@@ -184,14 +184,9 @@ namespace WonderCircuits.UnitOf
         public double ToThousandthInches() { return To(TIN); }
         public double ToYards() { return To(YD); }
     
-
-        /// <summary>
-        /// Method to perform all conversions within Length class.
-        /// All "To" methods within Length use this method.
-        /// </summary>
         private double To(double t)
         {
-            return Conversion(t, Varaibles.MeasumentValue, true);
+            return Conversion(t, true);
         }
         #endregion
     }
