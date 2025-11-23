@@ -3,12 +3,12 @@ using WonderCircuits.UnitOf.Common;
 namespace WonderCircuits.UnitOf
 {
     /// <summary>
-    /// UnitOf.Mass()
+    /// UnitOf.Weight()
     /// 
-    /// Ex: double foo = new UnitOf.Mass().FromGrams(1.25).ToPounds(); //One line conversion from 1.25 Grams to Pounds
+    /// Ex: double foo = new UnitOf.Weight().FromGrams(1.25).ToPounds(); //One line conversion from 1.25 Grams to Pounds
     /// </summary>
     [Serializable]
-    public class Mass : UnitConverterBase
+    public class Weight : UnitConverterBase
     {
         #region Constants
         internal static readonly double AG = 1e18;                //Attogram 
@@ -47,40 +47,40 @@ namespace WonderCircuits.UnitOf
         #endregion
 
         #region From Methods
-        public Mass FromAttograms(double v) { return From(v, AG, "AG"); }
-        public Mass FromCarats(double v) { return From(v, CT, "CT"); }
-        public Mass FromCentigrams(double v) { return From(v, CG, "CG"); }
-        public Mass FromCentners(double v) { return From(v, CWT, "CWT"); }
-        public Mass FromDecigrams(double v) { return From(v, DG, "DG"); }
-        public Mass FromDekagrams(double v) { return From(v, DAG, "DAG"); }
-        public Mass FromExagrams(double v) { return From(v, EG, "EG"); }
-        public Mass FromFemtograms(double v) { return From(v, FG, "FG"); }
-        public Mass FromGamma(double v) { return From(v, GAMM, "GAMM"); }
-        public Mass FromGigagrams(double v) { return From(v, GG, "GG"); }
-        public Mass FromGrams(double v) { return From(v, G, "G"); }
-        public Mass FromHectograms(double v) { return From(v, HG, "HG"); }
-        public Mass FromKilograms(double v) { return From(v, KG, "KG"); }
-        public Mass FromKilopounds(double v) { return From(v, KIP, "KIP"); }
-        public Mass FromKilotonsMetric(double v) { return From(v, TK, "TK"); }
-        public Mass FromMegagrams(double v) { return From(v, MG, "MG"); }
-        public Mass FromMicrograms(double v) { return From(v, MUG, "MUG"); }
-        public Mass FromMilligrams(double v) { return From(v, MILG, "MILG"); }
-        public Mass FromNanograms(double v) { return From(v, NG, "NG"); }
-        public Mass FromOuncesMetric(double v) { return From(v, MOZ, "MOZ"); }
-        public Mass FromOuncesUS(double v) { return From(v, USOZ, "USOZ"); }
-        public Mass FromPetagrams(double v) { return From(v, PEG, "PEG"); }
-        public Mass FromPicograms(double v) { return From(v, PG, "PG"); }
-        public Mass FromPounds(double v) { return From(v, LB, "LB"); }
-        public Mass FromQuintals(double v) { return From(v, QU, "QU"); }
-        public Mass FromSlugs(double v) { return From(v, SLUG, "SLUG"); }
-        public Mass FromStonesUK(double v) { return From(v, STUK, "STUK"); }
-        public Mass FromStonesUS(double v) { return From(v, STUS, "STUS"); }
-        public Mass FromTeragrams(double v) { return From(v, TG, "TG"); }
-        public Mass FromTonsImperial(double v) { return From(v, TI, "TI"); }
-        public Mass FromTonsMetric(double v) { return From(v, TM, "TM"); }
-        public Mass FromTonsUS(double v) { return From(v, TUS, "TUS"); }
+        public Weight FromAttograms(double v) { return From(v, AG, "AG"); }
+        public Weight FromCarats(double v) { return From(v, CT, "CT"); }
+        public Weight FromCentigrams(double v) { return From(v, CG, "CG"); }
+        public Weight FromCentners(double v) { return From(v, CWT, "CWT"); }
+        public Weight FromDecigrams(double v) { return From(v, DG, "DG"); }
+        public Weight FromDekagrams(double v) { return From(v, DAG, "DAG"); }
+        public Weight FromExagrams(double v) { return From(v, EG, "EG"); }
+        public Weight FromFemtograms(double v) { return From(v, FG, "FG"); }
+        public Weight FromGamma(double v) { return From(v, GAMM, "GAMM"); }
+        public Weight FromGigagrams(double v) { return From(v, GG, "GG"); }
+        public Weight FromGrams(double v) { return From(v, G, "G"); }
+        public Weight FromHectograms(double v) { return From(v, HG, "HG"); }
+        public Weight FromKilograms(double v) { return From(v, KG, "KG"); }
+        public Weight FromKilopounds(double v) { return From(v, KIP, "KIP"); }
+        public Weight FromKilotonsMetric(double v) { return From(v, TK, "TK"); }
+        public Weight FromMegagrams(double v) { return From(v, MG, "MG"); }
+        public Weight FromMicrograms(double v) { return From(v, MUG, "MUG"); }
+        public Weight FromMilligrams(double v) { return From(v, MILG, "MILG"); }
+        public Weight FromNanograms(double v) { return From(v, NG, "NG"); }
+        public Weight FromOuncesMetric(double v) { return From(v, MOZ, "MOZ"); }
+        public Weight FromOuncesUS(double v) { return From(v, USOZ, "USOZ"); }
+        public Weight FromPetagrams(double v) { return From(v, PEG, "PEG"); }
+        public Weight FromPicograms(double v) { return From(v, PG, "PG"); }
+        public Weight FromPounds(double v) { return From(v, LB, "LB"); }
+        public Weight FromQuintals(double v) { return From(v, QU, "QU"); }
+        public Weight FromSlugs(double v) { return From(v, SLUG, "SLUG"); }
+        public Weight FromStonesUK(double v) { return From(v, STUK, "STUK"); }
+        public Weight FromStonesUS(double v) { return From(v, STUS, "STUS"); }
+        public Weight FromTeragrams(double v) { return From(v, TG, "TG"); }
+        public Weight FromTonsImperial(double v) { return From(v, TI, "TI"); }
+        public Weight FromTonsMetric(double v) { return From(v, TM, "TM"); }
+        public Weight FromTonsUS(double v) { return From(v, TUS, "TUS"); }
 
-        private Mass From(double v, double tt, string ts)
+        private Weight From(double v, double tt, string ts)
         {
             Store(v, tt, ts);
             return this;
