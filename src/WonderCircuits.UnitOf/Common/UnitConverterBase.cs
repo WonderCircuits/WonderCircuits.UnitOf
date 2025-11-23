@@ -1,30 +1,13 @@
 using System;
 
-namespace WonderCircuits.UnitOf
+namespace WonderCircuits.UnitOf.Common
 {
     /// <summary>
     /// Generic base class for most UnitOf measurement classes
     /// </summary>
-    [Serializable]
-    public class ConverterBase
+    public abstract class UnitConverterBase
     {
-        protected ConverterVariable me = new ConverterVariable(); //Instantiate class A.cs for variables needed to perform conversions.
-
-        /// <summary>
-        /// Returns value initially passed into the measurement's "From" method.
-        /// </summary>
-        public object GetValuePassed()
-        {
-            return (me.d) ? me.v : me.o;
-        }
-
-        /// <summary>
-        /// Returns the struct readonly constant value representing the "From" method of the measurement used.
-        /// </summary>
-        public string GetTypeConstantPassed()
-        {
-            return me.ts;
-        }
+        protected UnitConverterVaribles Varaibles { get; private set; } = new UnitConverterVaribles(); //Instantiate class A.cs for variables needed to perform conversions.
 
         /// <summary>
         /// Stores the needed values to do conversions of the measurement.
@@ -36,25 +19,15 @@ namespace WonderCircuits.UnitOf
         /// <param name="tt">Struct readonly constant value representing the "From" method of the measurement used.</param>
         /// <param name="ty">String value of the struct readonly constant value representing the "From" method of the measurement used.</param>
         /// <returns>class context passed in so variable like "UnitOf.Length len" can be used as the variable type</returns>
-        protected T s<T>(T t, double v, double tt, string ty)
+        protected T Store<T>(T t, double v, double tt, string ty)
         {
-            me = new ConverterVariable(v, tt, ty);
+            Varaibles = new UnitConverterVaribles(v, tt, ty);
             return t;
         }
 
-        /// <summary>
-        /// Stores the needed values to do conversions of the measurement.
-        /// This overload of the method is used only in DataType as Objects can be passed as "From" values.
-        /// </summary>
-        /// <typeparam name="T">Class context of measurement passed (usually "this" is passed from caller).</typeparam>
-        /// <param name="t">Class context of measurement passed (usually "this" is passed from caller).</param>
-        /// <param name="v">User passed "From" value (object).</param>
-        /// <param name="ty">Struct readonly constant value representing the "From" method of the measurement used.</param>
-        /// <returns>class context passed in so variable like "UnitOf.DataType dt" can be used as the variable type</returns>
-        protected T s<T>(T t, object v, string ty)
+        protected void Store(double v, double tt, string ts)
         {
-            me = new ConverterVariable(v, ty);
-            return t;
+            Varaibles = new UnitConverterVaribles(v, tt, ts);
         }
 
         /// <summary>
@@ -79,7 +52,7 @@ namespace WonderCircuits.UnitOf
         /// <returns>Finished conversion. "from" converted into "to" value.</returns>
         protected double Conversion(double a, double b, bool isMultiplyThenDivide)
         {
-            return MultiplyOrDivide(MultiplyOrDivide(me.v, a, isMultiplyThenDivide), b, !isMultiplyThenDivide);
+            return MultiplyOrDivide(MultiplyOrDivide(Varaibles.Value, a, isMultiplyThenDivide), b, !isMultiplyThenDivide);
         }
 
         /// <summary>

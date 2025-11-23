@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Force()
     /// 
     /// Ex: double foo = new UnitOf.Force().FromNewtons(1.25).ToPoundForces(); //One line conversion from 1.25 Newtons to PoundForces
     /// </summary>
     [Serializable]
-    public class Force : ConverterBase{
-
+    public class Force : UnitConverterBase
+    {
         #region Constants
         internal static readonly double AUF = 12137804.11081;         //Atomic Unit of Force
         internal static readonly double AN = 1e18;                    //Attonewton
@@ -46,97 +49,94 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double TN = 1e-12;                   //Teranewton   
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within Force class.
-        /// All "To" methods within Force use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+
+        #region From Methods
+        public Force FromAtomicUnitsOfForce(double v) { return From(v, AUF, "AUF"); }
+        public Force FromAttonewtons(double v) { return From(v, AN, "AN"); }
+        public Force FromCentinewtons(double v) { return From(v, CN, "CN"); }
+        public Force FromDecinewtons(double v) { return From(v, DN, "DN"); }
+        public Force FromDekanewtons(double v) { return From(v, DAN, "DAN"); }
+        public Force FromDynes(double v) { return From(v, DYN, "DYN"); }
+        public Force FromExanewtons(double v) { return From(v, EN, "EN"); }
+        public Force FromFemtonewtons(double v) { return From(v, FN, "FN"); }
+        public Force FromGiganewtons(double v) { return From(v, GN, "GN"); }
+        public Force FromGramForces(double v) { return From(v, GF, "GF"); }
+        public Force FromGraveForces(double v) { return From(v, GFF, "GFF"); }
+        public Force FromHectonewtons(double v) { return From(v, HN, "HN"); }
+        public Force FromJouleCentimeters(double v) { return From(v, JCM, "JCM"); }
+        public Force FromJouleMeters(double v) { return From(v, JM, "JM"); }
+        public Force FromKilogramForces(double v) { return From(v, KGF, "KGF"); }
+        public Force FromKilonewtons(double v) { return From(v, KN, "KN"); }
+        public Force FromKiloponds(double v) { return From(v, KP, "KP"); }
+        public Force FromKilopoundForces(double v) { return From(v, KIP, "KIP"); }
+        public Force FromLongTonForces(double v) { return From(v, LTF, "LTF"); }
+        public Force FromMeganewtons(double v) { return From(v, MN, "MN"); }
+        public Force FromMetricTonForces(double v) { return From(v, TFM, "TFM"); }
+        public Force FromMicronewtons(double v) { return From(v, MUN, "MUN"); }
+        public Force FromMilligraveForces(double v) { return From(v, MGF, "MGF"); }
+        public Force FromMillinewtons(double v) { return From(v, MILN, "MILN"); }
+        public Force FromNanonewtons(double v) { return From(v, NN, "NN"); }
+        public Force FromNewtons(double v) { return From(v, N, "N"); }
+        public Force FromOunceForces(double v) { return From(v, OZF, "OZF"); }
+        public Force FromPetanewtons(double v) { return From(v, PEN, "PEN"); }
+        public Force FromPiconewtons(double v) { return From(v, PN, "PN"); }
+        public Force FromPonds(double v) { return From(v, P, "P"); }
+        public Force FromPoundFeetPerSecondSquared(double v) { return From(v, LBFT, "LBFT"); }
+        public Force FromPoundForces(double v) { return From(v, LBF, "LBF"); }
+        public Force FromPoundals(double v) { return From(v, PDL, "PDL"); }
+        public Force FromShortTonForces(double v) { return From(v, TFS, "TFS"); }
+        public Force FromSthenes(double v) { return From(v, SN, "SN"); }
+        public Force FromTeranewtons(double v) { return From(v, TN, "TN"); }
+
+        private Force From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
         }
+        #endregion
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Force foo = new UnitOf.Force().FromNewtons(1.25); //Variable "foo" will be able to convert 1.25 Newtons into any unit of Force
-        /// </summary>
-        public Force FromAtomicUnitsOfForce(double v){return s(this,v,AUF,"AUF");}
-        public Force FromAttonewtons(double v){return s(this,v,AN,"AN");}
-        public Force FromCentinewtons(double v){return s(this,v,CN,"CN");}
-        public Force FromDecinewtons(double v){return s(this,v,DN,"DN");}
-        public Force FromDekanewtons(double v){return s(this,v,DAN,"DAN");}
-        public Force FromDynes(double v){return s(this,v,DYN,"DYN");}
-        public Force FromExanewtons(double v){return s(this,v,EN,"EN");}
-        public Force FromFemtonewtons(double v){return s(this,v,FN,"FN");}
-        public Force FromGiganewtons(double v){return s(this,v,GN,"GN");}
-        public Force FromGramForces(double v){return s(this,v,GF,"GF");}
-        public Force FromGraveForces(double v){return s(this,v,GFF,"GFF");}
-        public Force FromHectonewtons(double v){return s(this,v,HN,"HN");}
-        public Force FromJouleCentimeters(double v){return s(this,v,JCM,"JCM");}
-        public Force FromJouleMeters(double v){return s(this,v,JM,"JM");}
-        public Force FromKilogramForces(double v){return s(this,v,KGF,"KGF");}
-        public Force FromKilonewtons(double v){return s(this,v,KN,"KN");}
-        public Force FromKiloponds(double v){return s(this,v,KP,"KP");}
-        public Force FromKilopoundForces(double v){return s(this,v,KIP,"KIP");}
-        public Force FromLongTonForces(double v){return s(this,v,LTF,"LTF");}
-        public Force FromMeganewtons(double v){return s(this,v,MN,"MN");}
-        public Force FromMetricTonForces(double v){return s(this,v,TFM,"TFM");}
-        public Force FromMicronewtons(double v){return s(this,v,MUN,"MUN");}
-        public Force FromMilligraveForces(double v){return s(this,v,MGF,"MGF");}
-        public Force FromMillinewtons(double v){return s(this,v,MILN,"MILN");}
-        public Force FromNanonewtons(double v){return s(this,v,NN,"NN");}
-        public Force FromNewtons(double v){return s(this,v,N,"N");}
-        public Force FromOunceForces(double v){return s(this,v,OZF,"OZF");}
-        public Force FromPetanewtons(double v){return s(this,v,PEN,"PEN");}
-        public Force FromPiconewtons(double v){return s(this,v,PN,"PN");}
-        public Force FromPonds(double v){return s(this,v,P,"P");}
-        public Force FromPoundFeetPerSecondSquared(double v){return s(this,v,LBFT,"LBFT");}
-        public Force FromPoundForces(double v){return s(this,v,LBF,"LBF");}
-        public Force FromPoundals(double v){return s(this,v,PDL,"PDL");}
-        public Force FromShortTonForces(double v){return s(this,v,TFS,"TFS");}
-        public Force FromSthenes(double v){return s(this,v,SN,"SN");}
-        public Force FromTeranewtons(double v){return s(this,v,TN,"TN");}
+        #region To Methods
+        public double ToAtomicUnitsOfForce() { return To(AUF); }
+        public double ToAttonewtons() { return To(AN); }
+        public double ToCentinewtons() { return To(CN); }
+        public double ToDecinewtons() { return To(DN); }
+        public double ToDekanewtons() { return To(DAN); }
+        public double ToDynes() { return To(DYN); }
+        public double ToExanewtons() { return To(EN); }
+        public double ToFemtonewtons() { return To(FN); }
+        public double ToGiganewtons() { return To(GN); }
+        public double ToGramForces() { return To(GF); }
+        public double ToGraveForces() { return To(GFF); }
+        public double ToHectonewtons() { return To(HN); }
+        public double ToJouleCentimeters() { return To(JCM); }
+        public double ToJouleMeters() { return To(JM); }
+        public double ToKilogramForces() { return To(KGF); }
+        public double ToKilonewtons() { return To(KN); }
+        public double ToKiloponds() { return To(KP); }
+        public double ToKilopoundForces() { return To(KIP); }
+        public double ToLongTonForces() { return To(LTF); }
+        public double ToMeganewtons() { return To(MN); }
+        public double ToMetricTonForces() { return To(TFM); }
+        public double ToMicronewtons() { return To(MUN); }
+        public double ToMilligraveForces() { return To(MGF); }
+        public double ToMillinewtons() { return To(MILN); }
+        public double ToNanonewtons() { return To(NN); }
+        public double ToNewtons() { return To(N); }
+        public double ToOunceForces() { return To(OZF); }
+        public double ToPetanewtons() { return To(PEN); }
+        public double ToPiconewtons() { return To(PN); }
+        public double ToPonds() { return To(P); }
+        public double ToPoundFeetPerSecondSquared() { return To(LBFT); }
+        public double ToPoundForces() { return To(LBF); }
+        public double ToPoundals() { return To(PDL); }
+        public double ToShortTonForces() { return To(TFS); }
+        public double ToSthenes() { return To(SN); }
+        public double ToTeranewtons() { return To(TN); }
 
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToPoundForces(); //Variable "bar" being of type UnitOf.Force with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Force().FromNewtons(1.25).ToPoundForces(); //One line conversion from 1.25 Newtons to PoundForces
-        /// </summary>
-        public double ToAtomicUnitsOfForce(){return c(AUF);}
-        public double ToAttonewtons(){return c(AN);}
-        public double ToCentinewtons(){return c(CN);}
-        public double ToDecinewtons(){return c(DN);}
-        public double ToDekanewtons(){return c(DAN);}
-        public double ToDynes(){return c(DYN);}
-        public double ToExanewtons(){return c(EN);}
-        public double ToFemtonewtons(){return c(FN);}
-        public double ToGiganewtons(){return c(GN);}
-        public double ToGramForces(){return c(GF);}
-        public double ToGraveForces(){return c(GFF);}
-        public double ToHectonewtons(){return c(HN);}
-        public double ToJouleCentimeters(){return c(JCM);}
-        public double ToJouleMeters(){return c(JM);}
-        public double ToKilogramForces(){return c(KGF);}
-        public double ToKilonewtons(){return c(KN);}
-        public double ToKiloponds(){return c(KP);}
-        public double ToKilopoundForces(){return c(KIP);}
-        public double ToLongTonForces(){return c(LTF);}
-        public double ToMeganewtons(){return c(MN);}
-        public double ToMetricTonForces(){return c(TFM);}
-        public double ToMicronewtons(){return c(MUN);}
-        public double ToMilligraveForces(){return c(MGF);}
-        public double ToMillinewtons(){return c(MILN);}
-        public double ToNanonewtons(){return c(NN);}
-        public double ToNewtons(){return c(N);}
-        public double ToOunceForces(){return c(OZF);}
-        public double ToPetanewtons(){return c(PEN);}
-        public double ToPiconewtons(){return c(PN);}
-        public double ToPonds(){return c(P);}
-        public double ToPoundFeetPerSecondSquared(){return c(LBFT);}
-        public double ToPoundForces(){return c(LBF);}
-        public double ToPoundals(){return c(PDL);}
-        public double ToShortTonForces(){return c(TFS);}
-        public double ToSthenes(){return c(SN);}
-        public double ToTeranewtons(){return c(TN);}
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
+        }
+        #endregion
     }
 }

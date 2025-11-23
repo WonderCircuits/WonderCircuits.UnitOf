@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Area()
     /// 
     /// Ex: double foo = new UnitOf.Area().fromSquareMeters(1.25).toAcres(); //One line conversion from 1.25 SquareMeters to Acres
     /// </summary>
     [Serializable]
-    public class Area : ConverterBase{
-
+    public class Area : UnitConverterBase
+    {
         #region Constants
         internal static readonly double AC = 1/4046.8564224;  //Acre
         internal static readonly double A = 1e-2;             //Are
@@ -37,79 +40,77 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double YD = 1/0.83612736;    //Square Yard
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within Area class.
-        /// All "To" methods within Area use this method.
-        /// </summary>
-        private double c(double t) {
-            return Conversion(t, me.t);
+
+        #region From Methods
+        public Area FromAcres(double v) { return From(v, AC, "AC"); }
+        public Area FromAres(double v) { return From(v, A, "A"); }
+        public Area FromArpents(double v) { return From(v, AR, "AR"); }
+        public Area FromBarns(double v) { return From(v, B, "B"); }
+        public Area FromCircularInches(double v) { return From(v, CRIN, "CRIN"); }
+        public Area FromCircularMils(double v) { return From(v, CRMIL, "CRMIL"); }
+        public Area FromHectares(double v) { return From(v, HA, "HA"); }
+        public Area FromHomesteads(double v) { return From(v, HS, "HS"); }
+        public Area FromRoods(double v) { return From(v, R, "R"); }
+        public Area FromSabins(double v) { return From(v, S, "S"); }
+        public Area FromSquareCentimeters(double v) { return From(v, C, "C"); }
+        public Area FromSquareChains(double v) { return From(v, CH, "CH"); }
+        public Area FromSquareDecimeters(double v) { return From(v, D, "D"); }
+        public Area FromSquareDekameters(double v) { return From(v, DA, "DA"); }
+        public Area FromSquareFeet(double v) { return From(v, FT, "FT"); }
+        public Area FromSquareHectometers(double v) { return From(v, H, "H"); }
+        public Area FromSquareInches(double v) { return From(v, IN, "IN"); }
+        public Area FromSquareKilometers(double v) { return From(v, K, "K"); }
+        public Area FromSquareMeters(double v) { return From(v, M, "M"); }
+        public Area FromSquareMicrometers(double v) { return From(v, MU, "MU"); }
+        public Area FromSquareMiles(double v) { return From(v, MI, "MI"); }
+        public Area FromSquareMillimeters(double v) { return From(v, MIL, "MIL"); }
+        public Area FromSquareNanometers(double v) { return From(v, N, "N"); }
+        public Area FromSquarePerches(double v) { return From(v, PE, "PE"); }
+        public Area FromSquarePoles(double v) { return From(v, PO, "PO"); }
+        public Area FromSquareRods(double v) { return From(v, ROD, "ROD"); }
+        public Area FromSquareYards(double v) { return From(v, YD, "YD"); }
+
+        private Area From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToAcres() { return To(AC); }
+        public double ToAres() { return To(A); }
+        public double ToArpents() { return To(AR); }
+        public double ToBarns() { return To(B); }
+        public double ToCircularInches() { return To(CRIN); }
+        public double ToCircularMils() { return To(CRMIL); }
+        public double ToHectares() { return To(HA); }
+        public double ToHomesteads() { return To(HS); }
+        public double ToRoods() { return To(R); }
+        public double ToSabins() { return To(S); }
+        public double ToSquareCentimeters() { return To(C); }
+        public double ToSquareChains() { return To(CH); }
+        public double ToSquareDecimeters() { return To(D); }
+        public double ToSquareDekameters() { return To(DA); }
+        public double ToSquareFeet() { return To(FT); }
+        public double ToSquareHectometers() { return To(H); }
+        public double ToSquareInches() { return To(IN); }
+        public double ToSquareKilometers() { return To(K); }
+        public double ToSquareMeters() { return To(M); }
+        public double ToSquareMicrometers() { return To(MU); }
+        public double ToSquareMiles() { return To(MI); }
+        public double ToSquareMillimeters() { return To(MIL); }
+        public double ToSquareNanometers() { return To(N); }
+        public double ToSquarePerches() { return To(PE); }
+        public double ToSquarePoles() { return To(PO); }
+        public double ToSquareRods() { return To(ROD); }
+        public double ToSquareYards() { return To(YD); }
+
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Area foo = new UnitOf.Area().FromSquareMeters(1.25); //Variable "foo" will be able to convert 1.25 SquareMeters into any unit of Area
-        /// </summary>
-        public Area FromAcres(double v){return s(this,v,AC,"AC");}
-        public Area FromAres(double v){return s(this,v,A,"A");}
-        public Area FromArpents(double v){return s(this,v,AR,"AR");}
-        public Area FromBarns(double v){return s(this,v,B,"B");}
-        public Area FromCircularInches(double v){return s(this,v,CRIN,"CRIN");}
-        public Area FromCircularMils(double v){return s(this,v,CRMIL,"CRMIL");}
-        public Area FromHectares(double v){return s(this,v,HA,"HA");}
-        public Area FromHomesteads(double v){return s(this,v,HS,"HS");}
-        public Area FromRoods(double v){return s(this,v,R,"R");}
-        public Area FromSabins(double v){return s(this,v,S,"S");}
-        public Area FromSquareCentimeters(double v){return s(this,v,C,"C");}
-        public Area FromSquareChains(double v){return s(this,v,CH,"CH");}
-        public Area FromSquareDecimeters(double v){return s(this,v,D,"D");}
-        public Area FromSquareDekameters(double v){return s(this,v,DA,"DA");}
-        public Area FromSquareFeet(double v){return s(this,v,FT,"FT");}
-        public Area FromSquareHectometers(double v){return s(this,v,H,"H");}
-        public Area FromSquareInches(double v){return s(this,v,IN,"IN");}
-        public Area FromSquareKilometers(double v){return s(this,v,K,"K");}
-        public Area FromSquareMeters(double v){return s(this,v,M,"M");}
-        public Area FromSquareMicrometers(double v){return s(this,v,MU,"MU");}
-        public Area FromSquareMiles(double v){return s(this,v,MI,"MI");}
-        public Area FromSquareMillimeters(double v){return s(this,v,MIL,"MIL");}
-        public Area FromSquareNanometers(double v){return s(this,v,N,"N");}
-        public Area FromSquarePerches(double v){return s(this,v,PE,"PE");}
-        public Area FromSquarePoles(double v){return s(this,v,PO,"PO");}
-        public Area FromSquareRods(double v){return s(this,v,ROD,"ROD");}
-        public Area FromSquareYards(double v){return s(this,v,YD,"YD");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToAcres(); //Variable "bar" being of type UnitOf.Area with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Area().FromSquareMeters(1.25).ToAcres(); //One line conversion from 1.25 SquareMeters to Acres
-        /// </summary>
-        public double ToAcres(){return c(AC);}
-        public double ToAres(){return c(A);}
-        public double ToArpents(){return c(AR);}
-        public double ToBarns(){return c(B);}
-        public double ToCircularInches(){return c(CRIN);}
-        public double ToCircularMils(){return c(CRMIL);}
-        public double ToHectares(){return c(HA);}
-        public double ToHomesteads(){return c(HS);}
-        public double ToRoods(){return c(R);}
-        public double ToSabins(){return c(S);}
-        public double ToSquareCentimeters(){return c(C);}
-        public double ToSquareChains(){return c(CH);}
-        public double ToSquareDecimeters(){return c(D);}
-        public double ToSquareDekameters(){return c(DA);}
-        public double ToSquareFeet(){return c(FT);}
-        public double ToSquareHectometers(){return c(H);}
-        public double ToSquareInches(){return c(IN);}
-        public double ToSquareKilometers(){return c(K);}    
-        public double ToSquareMeters(){return c(M);}
-        public double ToSquareMicrometers(){return c(MU);}   
-        public double ToSquareMiles(){return c(MI);}
-        public double ToSquareMillimeters(){return c(MIL);}
-        public double ToSquareNanometers(){return c(N);}   
-        public double ToSquarePerches(){return c(PE);}
-        public double ToSquarePoles(){return c(PO);}
-        public double ToSquareRods(){return c(ROD);}
-        public double ToSquareYards(){return c(YD);}
+        #endregion
     }
 }

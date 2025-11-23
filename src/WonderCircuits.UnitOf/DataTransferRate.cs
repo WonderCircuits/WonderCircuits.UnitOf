@@ -1,11 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.DataTransferRate()
     /// 
     /// Ex: double foo = new UnitOf.DataTransferRate().FromMegabytesPerSecond(1.25).ToKilobytesPerSecond(); //One line conversion from 1.25 MegabytesPerSecond to KilobytesPerSecond
     /// </summary>
     [Serializable]
-    public class DataTransferRate : ConverterBase{
+    public class DataTransferRate : UnitConverterBase
+    {
         #region Constants
         internal static readonly double BIS = 1.0 * 8.0 * 1024.0 * 1024.0;            //Bit per Second
         internal static readonly double BS = 1.0 * 1.0 * 1024.0 * 1024.0;             //Byte per Second
@@ -59,125 +63,126 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double USB31 = (1/1250.0) * 1.048576;                //USB 3.1
 
         #endregion
+
+        #region From Methods
+        public DataTransferRate FromBitsPerSecond(double v) { return From(v, BIS, "BIS"); }
+        public DataTransferRate FromBytesPerSecond(double v) { return From(v, BS, "BS"); }
+        public DataTransferRate FromEthernetsBase10(double v) { return From(v, E10, "E10"); }
+        public DataTransferRate FromEthernetsBase100(double v) { return From(v, E100, "E100"); }
+        public DataTransferRate FromEthernetsBase1000(double v) { return From(v, E1000, "E1000"); }
+        public DataTransferRate FromFireWires400(double v) { return From(v, FW400, "FW400"); }
+        public DataTransferRate FromFireWires800(double v) { return From(v, FW800, "FW800"); }
+        public DataTransferRate FromFireWiresS1600_S3200(double v) { return From(v, FW3200, "FW3200"); }
+        public DataTransferRate FromGigabitsPerSecond(double v) { return From(v, GBIS, "GBIS"); }
+        public DataTransferRate FromGigabytesPerSecond(double v) { return From(v, GBS, "GBS"); }
+        public DataTransferRate FromISDNsDual(double v) { return From(v, ISDND, "ISDND"); }
+        public DataTransferRate FromISDNsSingle(double v) { return From(v, ISDNS, "ISDNS"); }
+        public DataTransferRate FromKilobitsPerSecond(double v) { return From(v, KBIS, "KBIS"); }
+        public DataTransferRate FromKilobytesPerSecond(double v) { return From(v, KBS, "KBS"); }
+        public DataTransferRate FromMegabitsPerSecond(double v) { return From(v, MBIS, "MBIS"); }
+        public DataTransferRate FromMegabytesPerSecond(double v) { return From(v, MBS, "MBS"); }
+        public DataTransferRate FromModems110b(double v) { return From(v, M110, "M110"); }
+        public DataTransferRate FromModems1200b(double v) { return From(v, M1200, "M1200"); }
+        public DataTransferRate FromModems14_4k(double v) { return From(v, M14K, "M14K"); }
+        public DataTransferRate FromModems2400b(double v) { return From(v, M2400, "M2400"); }
+        public DataTransferRate FromModems28_8k(double v) { return From(v, M28K, "M28K"); }
+        public DataTransferRate FromModems300b(double v) { return From(v, M300, "M300"); }
+        public DataTransferRate FromModems33_6k(double v) { return From(v, M33K, "M33K"); }
+        public DataTransferRate FromModems56k(double v) { return From(v, M56K, "M56K"); }
+        public DataTransferRate FromModems9600b(double v) { return From(v, M9600, "M9600"); }
+        public DataTransferRate FromOCs1(double v) { return From(v, OC1, "OC1"); }
+        public DataTransferRate FromOCs12(double v) { return From(v, OC12, "OC12"); }
+        public DataTransferRate FromOCs192(double v) { return From(v, OC192, "OC192"); }
+        public DataTransferRate FromOCs24(double v) { return From(v, OC24, "OC24"); }
+        public DataTransferRate FromOCs3(double v) { return From(v, OC3, "OC3"); }
+        public DataTransferRate FromOCs48(double v) { return From(v, OC48, "OC48"); }
+        public DataTransferRate FromOCs768(double v) { return From(v, OC768, "OC768"); }
+        public DataTransferRate FromPetabitsPerSecond(double v) { return From(v, PBIS, "PBIS"); }
+        public DataTransferRate FromPetabytesPerSecond(double v) { return From(v, PBS, "PBS"); }
+        public DataTransferRate FromSIUnitGigabitsPerSecond(double v) { return From(v, SIGBIS, "SIGBIS"); }
+        public DataTransferRate FromSIUnitGigabytesPerSecond(double v) { return From(v, SIGBS, "SIGBS"); }
+        public DataTransferRate FromSIUnitKilobitsPerSecond(double v) { return From(v, SIKBIS, "SIKBIS"); }
+        public DataTransferRate FromSIUnitKilobytesPerSecond(double v) { return From(v, SIKBS, "SIKBS"); }
+        public DataTransferRate FromSIUnitMegabitsPerSecond(double v) { return From(v, SIMBIS, "SIMBIS"); }
+        public DataTransferRate FromSIUnitMegabytesPerSecond(double v) { return From(v, SIMBS, "SIMBS"); }
+        public DataTransferRate FromSIUnitPetabitsPerSecond(double v) { return From(v, SIPBIS, "SIPBIS"); }
+        public DataTransferRate FromSIUnitPetabytesPerSecond(double v) { return From(v, SIPBS, "SIPBS"); }
+        public DataTransferRate FromSIUnitTerabitsPerSecond(double v) { return From(v, SITBIS, "SITBIS"); }
+        public DataTransferRate FromSIUnitTerabytesPerSecond(double v) { return From(v, SITBS, "SITBS"); }
+        public DataTransferRate FromTerabitsPerSecond(double v) { return From(v, TBIS, "TBIS"); }
+        public DataTransferRate FromTerabytesPerSecond(double v) { return From(v, TBS, "TBS"); }
+        public DataTransferRate FromUSBs1_0(double v) { return From(v, USB1, "USB1"); }
+        public DataTransferRate FromUSBs2_0(double v) { return From(v, USB2, "USB2"); }
+        public DataTransferRate FromUSBs3_0(double v) { return From(v, USB3, "USB3"); }
+        public DataTransferRate FromUSBs3_1(double v) { return From(v, USB31, "USB31"); }
+
+        private DataTransferRate From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToBitsPerSecond() { return To(BIS); }
+        public double ToBytesPerSecond() { return To(BS); }
+        public double ToEthernetsBase10() { return To(E10); }
+        public double ToEthernetsBase100() { return To(E100); }
+        public double ToEthernetsBase1000() { return To(E1000); }
+        public double ToFireWires400() { return To(FW400); }
+        public double ToFireWires800() { return To(FW800); }
+        public double ToFireWiresS1600_S3200() { return To(FW3200); }
+        public double ToGigabitsPerSecond() { return To(GBIS); }
+        public double ToGigabytesPerSecond() { return To(GBS); }
+        public double ToISDNsDual() { return To(ISDND); }
+        public double ToISDNsSingle() { return To(ISDNS); }
+        public double ToKilobitsPerSecond() { return To(KBIS); }
+        public double ToKilobytesPerSecond() { return To(KBS); }
+        public double ToMegabitsPerSecond() { return To(MBIS); }
+        public double ToMegabytesPerSecond() { return To(MBS); }
+        public double ToModems110b() { return To(M110); }
+        public double ToModems1200b() { return To(M1200); }
+        public double ToModems14_4k() { return To(M14K); }
+        public double ToModems2400b() { return To(M2400); }
+        public double ToModems28_8k() { return To(M28K); }
+        public double ToModems300b() { return To(M300); }
+        public double ToModems33_6k() { return To(M33K); }
+        public double ToModems56k() { return To(M56K); }
+        public double ToModems9600b() { return To(M9600); }
+        public double ToOCs1() { return To(OC1); }
+        public double ToOCs12() { return To(OC12); }
+        public double ToOCs192() { return To(OC192); }
+        public double ToOCs24() { return To(OC24); }
+        public double ToOCs3() { return To(OC3); }
+        public double ToOCs48() { return To(OC48); }
+        public double ToOCs768() { return To(OC768); }
+        public double ToPetabitsPerSecond() { return To(PBIS); }
+        public double ToPetabytesPerSecond() { return To(PBS); }
+        public double ToSIUnitGigabitsPerSecond() { return To(SIGBIS); }
+        public double ToSIUnitGigabytesPerSecond() { return To(SIGBS); }
+        public double ToSIUnitKilobitsPerSecond() { return To(SIKBIS); }
+        public double ToSIUnitKilobytesPerSecond() { return To(SIKBS); }
+        public double ToSIUnitMegabitsPerSecond() { return To(SIMBIS); }
+        public double ToSIUnitMegabytesPerSecond() { return To(SIMBS); }
+        public double ToSIUnitPetabitsPerSecond() { return To(SIPBIS); }
+        public double ToSIUnitPetabytesPerSecond() { return To(SIPBS); }
+        public double ToSIUnitTerabitsPerSecond() { return To(SITBIS); }
+        public double ToSIUnitTerabytesPerSecond() { return To(SITBS); }
+        public double ToTerabitsPerSecond() { return To(TBIS); }
+        public double ToTerabytesPerSecond() { return To(TBS); }
+        public double ToUSBs1_0() { return To(USB1); }
+        public double ToUSBs2_0() { return To(USB2); }
+        public double ToUSBs3_0() { return To(USB3); }
+        public double ToUSBs3_1() { return To(USB31); }
+
         /// <summary>
         /// Method to perform all conversions within DataTransferRate class.
         /// All "To" methods within DataTransferRate use this method.
         /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
-
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.DataTransferRate foo = new UnitOf.DataTransferRate().FromMegabytesPerSecond(1.25); //Variable "foo" will be able to convert 1.25 MegabytesPerSecond into any unit of DataTransferRate
-        /// </summary>
-        public DataTransferRate FromBitsPerSecond(double v){return s(this,v,BIS,"BIS");}
-        public DataTransferRate FromBytesPerSecond(double v){return s(this,v,BS,"BS");}
-        public DataTransferRate FromEthernetsBase10(double v){return s(this,v,E10,"E10");}
-        public DataTransferRate FromEthernetsBase100(double v){return s(this,v,E100,"E100");}
-        public DataTransferRate FromEthernetsBase1000(double v){return s(this,v,E1000,"E1000");}
-        public DataTransferRate FromFireWires400(double v){return s(this,v,FW400,"FW400");}
-        public DataTransferRate FromFireWires800(double v){return s(this,v,FW800,"FW800");}
-        public DataTransferRate FromFireWiresS1600_S3200(double v){return s(this,v,FW3200,"FW3200");}
-        public DataTransferRate FromGigabitsPerSecond(double v){return s(this,v,GBIS,"GBIS");}
-        public DataTransferRate FromGigabytesPerSecond(double v){return s(this,v,GBS,"GBS");}
-        public DataTransferRate FromISDNsDual(double v){return s(this,v,ISDND,"ISDND");}
-        public DataTransferRate FromISDNsSingle(double v){return s(this,v,ISDNS,"ISDNS");}
-        public DataTransferRate FromKilobitsPerSecond(double v){return s(this,v,KBIS,"KBIS");}
-        public DataTransferRate FromKilobytesPerSecond(double v){return s(this,v,KBS,"KBS");}
-        public DataTransferRate FromMegabitsPerSecond(double v){return s(this,v,MBIS,"MBIS");}
-        public DataTransferRate FromMegabytesPerSecond(double v){return s(this,v,MBS,"MBS");}
-        public DataTransferRate FromModems110b(double v){return s(this,v,M110,"M110");}
-        public DataTransferRate FromModems1200b(double v){return s(this,v,M1200,"M1200");}
-        public DataTransferRate FromModems14_4k(double v){return s(this,v,M14K,"M14K");}
-        public DataTransferRate FromModems2400b(double v){return s(this,v,M2400,"M2400");}
-        public DataTransferRate FromModems28_8k(double v){return s(this,v,M28K,"M28K");}
-        public DataTransferRate FromModems300b(double v){return s(this,v,M300,"M300");}
-        public DataTransferRate FromModems33_6k(double v){return s(this,v,M33K,"M33K");}
-        public DataTransferRate FromModems56k(double v){return s(this,v,M56K,"M56K");}
-        public DataTransferRate FromModems9600b(double v){return s(this,v,M9600,"M9600");}
-        public DataTransferRate FromOCs1(double v){return s(this,v,OC1,"OC1");}
-        public DataTransferRate FromOCs12(double v){return s(this,v,OC12,"OC12");}
-        public DataTransferRate FromOCs192(double v){return s(this,v,OC192,"OC192");}
-        public DataTransferRate FromOCs24(double v){return s(this,v,OC24,"OC24");}
-        public DataTransferRate FromOCs3(double v){return s(this,v,OC3,"OC3");}
-        public DataTransferRate FromOCs48(double v){return s(this,v,OC48,"OC48");}
-        public DataTransferRate FromOCs768(double v){return s(this,v,OC768,"OC768");}
-        public DataTransferRate FromPetabitsPerSecond(double v){return s(this,v,PBIS,"PBIS");}
-        public DataTransferRate FromPetabytesPerSecond(double v){return s(this,v,PBS,"PBS");}
-        public DataTransferRate FromSIUnitGigabitsPerSecond(double v){return s(this,v,SIGBIS,"SIGBIS");}
-        public DataTransferRate FromSIUnitGigabytesPerSecond(double v){return s(this,v,SIGBS,"SIGBS");}
-        public DataTransferRate FromSIUnitKilobitsPerSecond(double v){return s(this,v,SIKBIS,"SIKBIS");}
-        public DataTransferRate FromSIUnitKilobytesPerSecond(double v){return s(this,v,SIKBS,"SIKBS");}
-        public DataTransferRate FromSIUnitMegabitsPerSecond(double v){return s(this,v,SIMBIS,"SIMBIS");}
-        public DataTransferRate FromSIUnitMegabytesPerSecond(double v){return s(this,v,SIMBS,"SIMBS");}
-        public DataTransferRate FromSIUnitPetabitsPerSecond(double v){return s(this,v,SIPBIS,"SIPBIS");}
-        public DataTransferRate FromSIUnitPetabytesPerSecond(double v){return s(this,v,SIPBS,"SIPBS");}
-        public DataTransferRate FromSIUnitTerabitsPerSecond(double v){return s(this,v,SITBIS,"SITBIS");}
-        public DataTransferRate FromSIUnitTerabytesPerSecond(double v){return s(this,v,SITBS,"SITBS");}
-        public DataTransferRate FromTerabitsPerSecond(double v){return s(this,v,TBIS,"TBIS");}
-        public DataTransferRate FromTerabytesPerSecond(double v){return s(this,v,TBS,"TBS");}
-        public DataTransferRate FromUSBs1_0(double v){return s(this,v,USB1,"USB1");}
-        public DataTransferRate FromUSBs2_0(double v){return s(this,v,USB2,"USB2");}
-        public DataTransferRate FromUSBs3_0(double v){return s(this,v,USB3,"USB3");}
-        public DataTransferRate FromUSBs3_1(double v){return s(this,v,USB31,"USB31");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToKilobytesPerSecond(); //Variable "bar" being of type UnitOf.DataTransferRate with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.DataTransferRate().FromMegabytesPerSecond(1.25).ToKilobytesPerSecond(); //One line conversion from 1.25 MegabytesPerSecond to KilobytesPerSecond
-        /// </summary>
-        public double ToBitsPerSecond(){return c(BIS);}
-        public double ToBytesPerSecond(){return c(BS);}
-        public double ToEthernetsBase10(){return c(E10);}
-        public double ToEthernetsBase100(){return c(E100);}
-        public double ToEthernetsBase1000(){return c(E1000);}
-        public double ToFireWires400(){return c(FW400);}
-        public double ToFireWires800(){return c(FW800);}
-        public double ToFireWiresS1600_S3200(){return c(FW3200);}
-        public double ToGigabitsPerSecond(){return c(GBIS);}
-        public double ToGigabytesPerSecond(){return c(GBS);}
-        public double ToISDNsDual(){return c(ISDND);}
-        public double ToISDNsSingle(){return c(ISDNS);}
-        public double ToKilobitsPerSecond(){return c(KBIS);}
-        public double ToKilobytesPerSecond(){return c(KBS);}
-        public double ToMegabitsPerSecond(){return c(MBIS);}
-        public double ToMegabytesPerSecond(){return c(MBS);}
-        public double ToModems110b(){return c(M110);}
-        public double ToModems1200b(){return c(M1200);}
-        public double ToModems14_4k(){return c(M14K);}
-        public double ToModems2400b(){return c(M2400);}
-        public double ToModems28_8k(){return c(M28K);}
-        public double ToModems300b(){return c(M300);}
-        public double ToModems33_6k(){return c(M33K);}
-        public double ToModems56k(){return c(M56K);}
-        public double ToModems9600b(){return c(M9600);}
-        public double ToOCs1(){return c(OC1);}
-        public double ToOCs12(){return c(OC12);}
-        public double ToOCs192(){return c(OC192);}
-        public double ToOCs24(){return c(OC24);}
-        public double ToOCs3(){return c(OC3);}
-        public double ToOCs48(){return c(OC48);}
-        public double ToOCs768(){return c(OC768);}
-        public double ToPetabitsPerSecond(){return c(PBIS);}
-        public double ToPetabytesPerSecond(){return c(PBS);}
-        public double ToSIUnitGigabitsPerSecond(){return c(SIGBIS);}
-        public double ToSIUnitGigabytesPerSecond(){return c(SIGBS);}
-        public double ToSIUnitKilobitsPerSecond(){return c(SIKBIS);}
-        public double ToSIUnitKilobytesPerSecond(){return c(SIKBS);}
-        public double ToSIUnitMegabitsPerSecond(){return c(SIMBIS);}
-        public double ToSIUnitMegabytesPerSecond(){return c(SIMBS);}
-        public double ToSIUnitPetabitsPerSecond(){return c(SIPBIS);}
-        public double ToSIUnitPetabytesPerSecond(){return c(SIPBS);}
-        public double ToSIUnitTerabitsPerSecond(){return c(SITBIS);}
-        public double ToSIUnitTerabytesPerSecond(){return c(SITBS);}
-        public double ToTerabitsPerSecond(){return c(TBIS);}
-        public double ToTerabytesPerSecond(){return c(TBS);}
-        public double ToUSBs1_0(){return c(USB1);}
-        public double ToUSBs2_0(){return c(USB2);}
-        public double ToUSBs3_0(){return c(USB3);}
-        public double ToUSBs3_1(){return c(USB31);}
+        #endregion
     }
 }

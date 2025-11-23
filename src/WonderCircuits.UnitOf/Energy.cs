@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Energy() / Work
     /// 
     /// Ex: double foo = new UnitOf.Energy().FromJoules(1.25).ToWattSeconds(); //One line conversion from 1.25 Joules to WattSeconds
     /// </summary>
     [Serializable]
-    public class Energy : ConverterBase{
-
+    public class Energy : UnitConverterBase
+    {
         #region Constants
         internal static readonly double AJ = 1e18;                    //Attojoule 
         internal static readonly double BTU = 1/1055.05585262;        //British Thermal Unit 
@@ -62,127 +65,124 @@ namespace WonderCircuits.UnitOf {
 
         #endregion
 
-        /// <summary>
-        /// Method to perform all conversions within Energy class.
-        /// All "To" methods within Energy use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        #region From Methods
+        public Energy FromAttojoules(double v) { return From(v, AJ, "AJ"); }
+        public Energy FromBTUsInternationalStandard(double v) { return From(v, BTU, "BTU"); }
+        public Energy FromBTUsThermochemical(double v) { return From(v, BTUTH, "BTUTH"); }
+        public Energy FromBarrelsOfOilEquivalent(double v) { return From(v, BOE, "BOE"); }
+        public Energy FromCaloriesInternationalSteam(double v) { return From(v, CALIT, "CALIT"); }
+        public Energy FromCaloriesNutritional(double v) { return From(v, CALN, "CALN"); }
+        public Energy FromCaloriesThermochemical(double v) { return From(v, CALTH, "CALTH"); }
+        public Energy FromDyneCentimeters(double v) { return From(v, DYNCM, "DYNCM"); }
+        public Energy FromElectronVolts(double v) { return From(v, EV, "EV"); }
+        public Energy FromErgs(double v) { return From(v, ERG, "ERG"); }
+        public Energy FromFootPounds(double v) { return From(v, FTLBF, "FTLBF"); }
+        public Energy FromGigajoules(double v) { return From(v, GJ, "GJ"); }
+        public Energy FromGigatonsOfTNT(double v) { return From(v, GT, "GT"); }
+        public Energy FromGigawattHours(double v) { return From(v, GWH, "GWH"); }
+        public Energy FromGramForceCentimeters(double v) { return From(v, GFCM, "GFCM"); }
+        public Energy FromGramForceMeters(double v) { return From(v, GFM, "GFM"); }
+        public Energy FromHartrees(double v) { return From(v, H, "H"); }
+        public Energy FromHorsepowerHours(double v) { return From(v, HPH, "HPH"); }
+        public Energy FromHorsepowerHoursMetric(double v) { return From(v, HPHM, "HPHM"); }
+        public Energy FromInchOunces(double v) { return From(v, INOZF, "INOZF"); }
+        public Energy FromInchPounds(double v) { return From(v, INLBF, "INLBF"); }
+        public Energy FromJoules(double v) { return From(v, J, "J"); }
+        public Energy FromKilocaloriesInternationalSteam(double v) { return From(v, KCALIT, "KCALIT"); }
+        public Energy FromKilocaloriesThermochemical(double v) { return From(v, KCALTH, "KCALTH"); }
+        public Energy FromKiloelectronVolts(double v) { return From(v, KEV, "KEV"); }
+        public Energy FromKilogramForceCentimeters(double v) { return From(v, KGFCM, "KGFCM"); }
+        public Energy FromKilogramForceMeters(double v) { return From(v, KGFM, "KGFM"); }
+        public Energy FromKilogramsOfTNT(double v) { return From(v, KGT, "KGT"); }
+        public Energy FromKilojoules(double v) { return From(v, KJ, "KJ"); }
+        public Energy FromKilopondMeters(double v) { return From(v, KPM, "KPM"); }
+        public Energy FromKilotonsOfTNT(double v) { return From(v, KT, "KT"); }
+        public Energy FromKilowattHours(double v) { return From(v, KWH, "KWH"); }
+        public Energy FromKilowattSeconds(double v) { return From(v, KWS, "KWS"); }
+        public Energy FromLiterAtmospheres(double v) { return From(v, LA, "LA"); }
+        public Energy FromMegaBTUsInternationalStandard(double v) { return From(v, MBTU, "MBTU"); }
+        public Energy FromMegaelectronVolts(double v) { return From(v, MEV, "MEV"); }
+        public Energy FromMegajoules(double v) { return From(v, MJ, "MJ"); }
+        public Energy FromMegatonsOfTNT(double v) { return From(v, MT, "MT"); }
+        public Energy FromMegawattHours(double v) { return From(v, MWH, "MWH"); }
+        public Energy FromMicrojoules(double v) { return From(v, MUJ, "MUJ"); }
+        public Energy FromMillijoules(double v) { return From(v, MILJ, "MILJ"); }
+        public Energy FromNanojoules(double v) { return From(v, NJ, "NJ"); }
+        public Energy FromNewtonMeters(double v) { return From(v, NM, "NM"); }
+        public Energy FromPlanckEnergy(double v) { return From(v, EP, "EP"); }
+        public Energy FromPoundalFeet(double v) { return From(v, PDLFT, "PDLFT"); }
+        public Energy FromRydbergs(double v) { return From(v, RY, "RY"); }
+        public Energy FromThermsEC(double v) { return From(v, THMEC, "THMEC"); }
+        public Energy FromThermsUS(double v) { return From(v, THMUS, "THMUS"); }
+        public Energy FromTonsOfTNT(double v) { return From(v, TT, "TT"); }
+        public Energy FromWattHours(double v) { return From(v, WH, "WH"); }
+        public Energy FromWattSeconds(double v) { return From(v, WS, "WS"); }
+
+        private Energy From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToAttojoules() { return To(AJ); }
+        public double ToBTUsInternationalStandard() { return To(BTU); }
+        public double ToBTUsThermochemical() { return To(BTUTH); }
+        public double ToBarrelsOfOilEquivalent() { return To(BOE); }
+        public double ToCaloriesInternationalSteam() { return To(CALIT); }
+        public double ToCaloriesNutritional() { return To(CALN); }
+        public double ToCaloriesThermochemical() { return To(CALTH); }
+        public double ToDyneCentimeters() { return To(DYNCM); }
+        public double ToElectronVolts() { return To(EV); }
+        public double ToErgs() { return To(ERG); }
+        public double ToFootPounds() { return To(FTLBF); }
+        public double ToGigajoules() { return To(GJ); }
+        public double ToGigatonsOfTNT() { return To(GT); }
+        public double ToGigawattHours() { return To(GWH); }
+        public double ToGramForceCentimeters() { return To(GFCM); }
+        public double ToGramForceMeters() { return To(GFM); }
+        public double ToHartrees() { return To(H); }
+        public double ToHorsepowerHours() { return To(HPH); }
+        public double ToHorsepowerHoursMetric() { return To(HPHM); }
+        public double ToInchOunces() { return To(INOZF); }
+        public double ToInchPounds() { return To(INLBF); }
+        public double ToJoules() { return To(J); }
+        public double ToKilocaloriesInternationalSteam() { return To(KCALIT); }
+        public double ToKilocaloriesThermochemical() { return To(KCALTH); }
+        public double ToKiloelectronVolts() { return To(KEV); }
+        public double ToKilogramForceCentimeters() { return To(KGFCM); }
+        public double ToKilogramForceMeters() { return To(KGFM); }
+        public double ToKilogramsOfTNT() { return To(KGT); }
+        public double ToKilojoules() { return To(KJ); }
+        public double ToKilopondMeters() { return To(KPM); }
+        public double ToKilotonsOfTNT() { return To(KT); }
+        public double ToKilowattHours() { return To(KWH); }
+        public double ToKilowattSeconds() { return To(KWS); }
+        public double ToLiterAtmospheres() { return To(LA); }
+        public double ToMegaBTUsInternationalStandard() { return To(MBTU); }
+        public double ToMegaelectronVolts() { return To(MEV); }
+        public double ToMegajoules() { return To(MJ); }
+        public double ToMegatonsOfTNT() { return To(MT); }
+        public double ToMegawattHours() { return To(MWH); }
+        public double ToMicrojoules() { return To(MUJ); }
+        public double ToMillijoules() { return To(MILJ); }
+        public double ToNanojoules() { return To(NJ); }
+        public double ToNewtonMeters() { return To(NM); }
+        public double ToPlanckEnergy() { return To(EP); }
+        public double ToPoundalFeet() { return To(PDLFT); }
+        public double ToRydbergs() { return To(RY); }
+        public double ToThermsEC() { return To(THMEC); }
+        public double ToThermsUS() { return To(THMUS); }
+        public double ToTonsOfTNT() { return To(TT); }
+        public double ToWattHours() { return To(WH); }
+        public double ToWattSeconds() { return To(WS); }
+
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Energy foo = new UnitOf.Energy().FromJoules(1.25); //Variable "foo" will be able to convert 1.25 Joules into any unit of Energy
-        /// </summary>
-        public Energy FromAttojoules(double v){return s(this,v,AJ,"AJ");}
-        public Energy FromBTUsInternationalStandard(double v){return s(this,v,BTU,"BTU");}
-        public Energy FromBTUsThermochemical(double v){return s(this, v, BTUTH, "BTUTH");}
-        public Energy FromBarrelsOfOilEquivalent(double v){return s(this,v,BOE,"BOE");}
-        public Energy FromCaloriesInternationalSteam(double v){return s(this,v,CALIT,"CALIT");}
-        public Energy FromCaloriesNutritional(double v){return s(this,v,CALN,"CALN");}
-        public Energy FromCaloriesThermochemical(double v){return s(this,v,CALTH,"CALTH");}
-        public Energy FromDyneCentimeters(double v){return s(this,v,DYNCM,"DYNCM");}
-        public Energy FromElectronVolts(double v){return s(this,v,EV,"EV");}
-        public Energy FromErgs(double v){return s(this,v,ERG,"ERG");}
-        public Energy FromFootPounds(double v){return s(this,v,FTLBF,"FTLBF");}
-        public Energy FromGigajoules(double v){return s(this,v,GJ,"GJ");}
-        public Energy FromGigatonsOfTNT(double v){return s(this, v, GT, "GT");}
-        public Energy FromGigawattHours(double v){return s(this,v,GWH,"GWH");}
-        public Energy FromGramForceCentimeters(double v){return s(this,v,GFCM,"GFCM");}
-        public Energy FromGramForceMeters(double v){return s(this,v,GFM,"GFM");}
-        public Energy FromHartrees(double v){return s(this,v,H,"H");}
-        public Energy FromHorsepowerHours(double v){return s(this,v,HPH,"HPH");}
-        public Energy FromHorsepowerHoursMetric(double v){return s(this,v,HPHM,"HPHM");}
-        public Energy FromInchOunces(double v){return s(this,v,INOZF,"INOZF");}
-        public Energy FromInchPounds(double v){return s(this,v,INLBF,"INLBF");}
-        public Energy FromJoules(double v){return s(this,v,J,"J");}
-        public Energy FromKilocaloriesInternationalSteam(double v){return s(this,v,KCALIT,"KCALIT");}
-        public Energy FromKilocaloriesThermochemical(double v){return s(this,v,KCALTH,"KCALTH");}
-        public Energy FromKiloelectronVolts(double v){return s(this,v,KEV,"KEV");}
-        public Energy FromKilogramForceCentimeters(double v){return s(this,v,KGFCM,"KGFCM");}
-        public Energy FromKilogramForceMeters(double v){return s(this,v,KGFM,"KGFM");}
-        public Energy FromKilogramsOfTNT(double v){return s(this, v, KGT, "KGT");}
-        public Energy FromKilojoules(double v){return s(this,v,KJ,"KJ");}
-        public Energy FromKilopondMeters(double v){return s(this,v,KPM,"KPM");}
-        public Energy FromKilotonsOfTNT(double v){return s(this, v, KT, "KT");}
-        public Energy FromKilowattHours(double v){return s(this,v,KWH,"KWH");}
-        public Energy FromKilowattSeconds(double v){return s(this,v,KWS,"KWS");}
-        public Energy FromLiterAtmospheres(double v){return s(this,v,LA,"LA");}
-        public Energy FromMegaBTUsInternationalStandard(double v){return s(this, v, MBTU, "MBTU");}
-        public Energy FromMegaelectronVolts(double v){return s(this,v,MEV,"MEV");}
-        public Energy FromMegajoules(double v){return s(this,v,MJ,"MJ");}
-        public Energy FromMegatonsOfTNT(double v){return s(this, v, MT, "MT");}
-        public Energy FromMegawattHours(double v){return s(this,v,MWH,"MWH");}
-        public Energy FromMicrojoules(double v){return s(this,v,MUJ,"MUJ");}
-        public Energy FromMillijoules(double v){return s(this,v,MILJ,"MILJ");}
-        public Energy FromNanojoules(double v){return s(this,v,NJ,"NJ");}
-        public Energy FromNewtonMeters(double v){return s(this,v,NM,"NM");}
-        public Energy FromPlanckEnergy(double v){return s(this,v,EP,"EP");}
-        public Energy FromPoundalFeet(double v){return s(this,v,PDLFT,"PDLFT");}
-        public Energy FromRydbergs(double v){return s(this,v,RY,"RY");}
-        public Energy FromThermsEC(double v){return s(this,v,THMEC,"THMEC");}
-        public Energy FromThermsUS(double v){return s(this,v,THMUS,"THMUS");}
-        public Energy FromTonsOfTNT(double v){return s(this, v, TT, "TT");}
-        public Energy FromWattHours(double v){return s(this,v,WH,"WH");}
-        public Energy FromWattSeconds(double v){return s(this,v,WS,"WS");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToWattSeconds(); //Variable "bar" being of type UnitOf.Energy with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Energy().FromJoules(1.25).ToWattSeconds(); //One line conversion from 1.25 Joules to WattSeconds
-        /// </summary>
-        public double ToAttojoules(){return c(AJ);}
-        public double ToBTUsInternationalStandard(){return c(BTU);}
-        public double ToBTUsThermochemical(){return c(BTUTH);}
-        public double ToBarrelsOfOilEquivalent(){return c(BOE);}
-        public double ToCaloriesInternationalSteam(){return c(CALIT);}
-        public double ToCaloriesNutritional(){return c(CALN);}
-        public double ToCaloriesThermochemical(){return c(CALTH);}
-        public double ToDyneCentimeters(){return c(DYNCM);}
-        public double ToElectronVolts(){return c(EV);}
-        public double ToErgs(){return c(ERG);}
-        public double ToFootPounds(){return c(FTLBF);}
-        public double ToGigajoules(){return c(GJ);}
-        public double ToGigatonsOfTNT(){return c(GT);}
-        public double ToGigawattHours(){return c(GWH);}
-        public double ToGramForceCentimeters(){return c(GFCM);}
-        public double ToGramForceMeters(){return c(GFM);}
-        public double ToHartrees(){return c(H);}
-        public double ToHorsepowerHours(){return c(HPH);}
-        public double ToHorsepowerHoursMetric(){return c(HPHM);}
-        public double ToInchOunces(){return c(INOZF);}
-        public double ToInchPounds(){return c(INLBF);}
-        public double ToJoules(){return c(J);}
-        public double ToKilocaloriesInternationalSteam(){return c(KCALIT);}
-        public double ToKilocaloriesThermochemical(){return c(KCALTH);}
-        public double ToKiloelectronVolts(){return c(KEV);}
-        public double ToKilogramForceCentimeters(){return c(KGFCM);}
-        public double ToKilogramForceMeters(){return c(KGFM);}
-        public double ToKilogramsOfTNT(){return c(KGT);}
-        public double ToKilojoules(){return c(KJ);}
-        public double ToKilopondMeters(){return c(KPM);}
-        public double ToKilotonsOfTNT(){return c(KT);}
-        public double ToKilowattHours(){return c(KWH);}
-        public double ToKilowattSeconds(){return c(KWS);}
-        public double ToLiterAtmospheres(){return c(LA);}
-        public double ToMegaBTUsInternationalStandard(){return c(MBTU);}
-        public double ToMegaelectronVolts(){return c(MEV);}
-        public double ToMegajoules(){return c(MJ);}
-        public double ToMegatonsOfTNT(){return c(MT);}
-        public double ToMegawattHours(){return c(MWH);}
-        public double ToMicrojoules(){return c(MUJ);}
-        public double ToMillijoules(){return c(MILJ);}
-        public double ToNanojoules(){return c(NJ);}
-        public double ToNewtonMeters(){return c(NM);}
-        public double ToPlanckEnergy(){return c(EP);}
-        public double ToPoundalFeet(){return c(PDLFT);}
-        public double ToRydbergs(){return c(RY);}
-        public double ToThermsEC(){return c(THMEC);}
-        public double ToThermsUS(){return c(THMUS);}
-        public double ToTonsOfTNT(){return c(TT);}
-        public double ToWattHours(){return c(WH);}
-        public double ToWattSeconds(){return c(WS);}
+        #endregion
     }
 }

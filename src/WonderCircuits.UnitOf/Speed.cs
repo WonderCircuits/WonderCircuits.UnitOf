@@ -1,11 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Speed()
     /// 
     /// Ex: double foo = new UnitOf.Speed().FromMilesPerHour(1.25).ToKilometersPerHour(); //One line conversion from 1.25 MilesPerHour to KilometersPerHour
     /// </summary>
     [Serializable]
-    public class Speed : ConverterBase{
+    public class Speed : UnitConverterBase
+    {
         #region Constants
         internal static readonly double CMH = 1/36e4;             //Centimeter per Hour
         internal static readonly double CMM = 1/6e3;              //Centimeter per Minute
@@ -42,92 +46,90 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double YS = 0.9144;              //Yard per Second
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within Speed class.
-        /// All "To" methods within Speed use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t,false);
+
+        #region From Methods
+        public Speed FromCentimetersPerHour(double v) { return From(v, CMH, "CMH"); }
+        public Speed FromCentimetersPerMinute(double v) { return From(v, CMM, "CMM"); }
+        public Speed FromCentimetersPerSecond(double v) { return From(v, CMS, "CMS"); }
+        public Speed FromEarthsVelocity(double v) { return From(v, EV, "EV"); }
+        public Speed FromFeetPerHour(double v) { return From(v, FTH, "FTH"); }
+        public Speed FromFeetPerMinute(double v) { return From(v, FTM, "FTM"); }
+        public Speed FromFeetPerSecond(double v) { return From(v, FTS, "FTS"); }
+        public Speed FromFirstCosmicVelocity(double v) { return From(v, CV1, "CV1"); }
+        public Speed FromInchesPerHour(double v) { return From(v, INH, "INH"); }
+        public Speed FromInchesPerMinute(double v) { return From(v, INM, "INM"); }
+        public Speed FromInchesPerSecond(double v) { return From(v, INS, "INS"); }
+        public Speed FromKilometersPerHour(double v) { return From(v, KMH, "KMH"); }
+        public Speed FromKilometersPerMinute(double v) { return From(v, KMM, "KMM"); }
+        public Speed FromKilometersPerSecond(double v) { return From(v, KMS, "KMS"); }
+        public Speed FromKnots(double v) { return From(v, KN, "KN"); }
+        public Speed FromLight(double v) { return From(v, C, "C"); }
+        public Speed FromMach(double v) { return From(v, MA, "MA"); }
+        public Speed FromMetersPerHour(double v) { return From(v, MH, "MH"); }
+        public Speed FromMetersPerMinute(double v) { return From(v, MM, "MM"); }
+        public Speed FromMetersPerSecond(double v) { return From(v, MS, "MS"); }
+        public Speed FromMilesPerHour(double v) { return From(v, MIH, "MIH"); }
+        public Speed FromMilesPerMinute(double v) { return From(v, MIM, "MIM"); }
+        public Speed FromMilesPerSecond(double v) { return From(v, MIS, "MIS"); }
+        public Speed FromMillimetersPerHour(double v) { return From(v, MMH, "MMH"); }
+        public Speed FromMillimetersPerMinute(double v) { return From(v, MMM, "MMM"); }
+        public Speed FromMillimetersPerSecond(double v) { return From(v, MMS, "MMS"); }
+        public Speed FromSecondCosmicVelocity(double v) { return From(v, CV2, "CV2"); }
+        public Speed FromSoundsInAir(double v) { return From(v, SA, "SA"); }
+        public Speed FromSoundsInWater(double v) { return From(v, SW, "SW"); }
+        public Speed FromThirdCosmicVelocity(double v) { return From(v, CV3, "CV3"); }
+        public Speed FromYardsPerHour(double v) { return From(v, YH, "YH"); }
+        public Speed FromYardsPerMinute(double v) { return From(v, YM, "YM"); }
+        public Speed FromYardsPerSecond(double v) { return From(v, YS, "YS"); }
+
+        private Speed From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToCentimetersPerHour() { return To(CMH); }
+        public double ToCentimetersPerMinute() { return To(CMM); }
+        public double ToCentimetersPerSecond() { return To(CMS); }
+        public double ToEarthsVelocity() { return To(EV); }
+        public double ToFeetPerHour() { return To(FTH); }
+        public double ToFeetPerMinute() { return To(FTM); }
+        public double ToFeetPerSecond() { return To(FTS); }
+        public double ToFirstCosmicVelocity() { return To(CV1); }
+        public double ToInchesPerHour() { return To(INH); }
+        public double ToInchesPerMinute() { return To(INM); }
+        public double ToInchesPerSecond() { return To(INS); }
+        public double ToKilometersPerHour() { return To(KMH); }
+        public double ToKilometersPerMinute() { return To(KMM); }
+        public double ToKilometersPerSecond() { return To(KMS); }
+        public double ToKnots() { return To(KN); }
+        public double ToLight() { return To(C); }
+        public double ToMach() { return To(MA); }
+        public double ToMetersPerHour() { return To(MH); }
+        public double ToMetersPerMinute() { return To(MM); }
+        public double ToMetersPerSecond() { return To(MS); }
+        public double ToMilesPerHour() { return To(MIH); }
+        public double ToMilesPerMinute() { return To(MIM); }
+        public double ToMilesPerSecond() { return To(MIS); }
+        public double ToMillimetersPerHour() { return To(MMH); }
+        public double ToMillimetersPerMinute() { return To(MMM); }
+        public double ToMillimetersPerSecond() { return To(MMS); }
+        public double ToSecondCosmicVelocity() { return To(CV2); }
+        public double ToSoundsInAir() { return To(SA); }
+        public double ToSoundsInWater() { return To(SW); }
+        public double ToThirdCosmicVelocity() { return To(CV3); }
+        public double ToYardsPerHour() { return To(YH); }
+        public double ToYardsPerMinute() { return To(YM); }
+        public double ToYardsPerSecond() { return To(YS); }
+
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant, false);
         }
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Speed foo = new UnitOf.Speed().FromMilesPerHour(1.25); //Variable "foo" will be able to convert 1.25 MilesPerHour into any unit of Speed
-        /// </summary>
-        public Speed FromCentimetersPerHour(double v){return s(this,v,CMH,"CMH");}
-        public Speed FromCentimetersPerMinute(double v){return s(this,v,CMM,"CMM");}
-        public Speed FromCentimetersPerSecond(double v){return s(this,v,CMS,"CMS");}
-        public Speed FromEarthsVelocity(double v){return s(this,v,EV,"EV");}
-        public Speed FromFeetPerHour(double v){return s(this,v,FTH,"FTH");}
-        public Speed FromFeetPerMinute(double v){return s(this,v,FTM,"FTM");}
-        public Speed FromFeetPerSecond(double v){return s(this,v,FTS,"FTS");}
-        public Speed FromFirstCosmicVelocity(double v){return s(this, v, CV1, "CV1");}
-        public Speed FromInchesPerHour(double v){return s(this,v,INH,"INH");}
-        public Speed FromInchesPerMinute(double v){return s(this,v,INM,"INM");}
-        public Speed FromInchesPerSecond(double v){return s(this,v,INS,"INS");}
-        public Speed FromKilometersPerHour(double v){return s(this,v,KMH,"KMH");}
-        public Speed FromKilometersPerMinute(double v){return s(this,v,KMM,"KMM");}
-        public Speed FromKilometersPerSecond(double v){return s(this,v,KMS,"KMS");}
-        public Speed FromKnots(double v){return s(this,v,KN,"KN");}
-        public Speed FromLight(double v){return s(this,v,C,"C");}
-        public Speed FromMach(double v){return s(this,v,MA,"MA");}
-        public Speed FromMetersPerHour(double v){return s(this,v,MH,"MH");}
-        public Speed FromMetersPerMinute(double v){return s(this,v,MM,"MM");}
-        public Speed FromMetersPerSecond(double v){return s(this,v,MS,"MS");}
-        public Speed FromMilesPerHour(double v){return s(this,v,MIH,"MIH");}
-        public Speed FromMilesPerMinute(double v){return s(this,v,MIM,"MIM");}
-        public Speed FromMilesPerSecond(double v){return s(this,v,MIS,"MIS");}
-        public Speed FromMillimetersPerHour(double v){return s(this,v,MMH,"MMH");}
-        public Speed FromMillimetersPerMinute(double v){return s(this,v,MMM,"MMM");}
-        public Speed FromMillimetersPerSecond(double v){return s(this,v,MMS,"MMS");}
-        public Speed FromSecondCosmicVelocity(double v){return s(this,v,CV2,"CV2");}
-        public Speed FromSoundsInAir(double v){return s(this, v, SA, "SA");}
-        public Speed FromSoundsInWater(double v){return s(this, v, SW, "SW");}
-        public Speed FromThirdCosmicVelocity(double v){return s(this, v, CV3, "CV3");}
-        public Speed FromYardsPerHour(double v){return s(this,v,YH,"YH");}
-        public Speed FromYardsPerMinute(double v){return s(this,v,YM,"YM");}
-        public Speed FromYardsPerSecond(double v){return s(this,v,YS,"YS");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToKilometersPerHour(); //Variable "bar" being of type UnitOf.Speed with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Speed().FromMilesPerHour(1.25).ToKilometersPerHour(); //One line conversion from 1.25 MilesPerHour to KilometersPerHour
-        /// </summary>
-        public double ToCentimetersPerHour(){return c(CMH);}
-        public double ToCentimetersPerMinute(){return c(CMM);}
-        public double ToCentimetersPerSecond(){return c(CMS);}
-        public double ToEarthsVelocity(){return c(EV);}
-        public double ToFeetPerHour(){return c(FTH);}
-        public double ToFeetPerMinute(){return c(FTM);}
-        public double ToFeetPerSecond(){return c(FTS);}
-        public double ToFirstCosmicVelocity(){return c(CV1);}
-        public double ToInchesPerHour(){return c(INH);}
-        public double ToInchesPerMinute(){return c(INM);}
-        public double ToInchesPerSecond(){return c(INS);}
-        public double ToKilometersPerHour(){return c(KMH);}
-        public double ToKilometersPerMinute(){return c(KMM);}
-        public double ToKilometersPerSecond(){return c(KMS);}
-        public double ToKnots(){return c(KN);}
-        public double ToLight(){return c(C);}
-        public double ToMach(){return c(MA);}
-        public double ToMetersPerHour(){return c(MH);}
-        public double ToMetersPerMinute(){return c(MM);}
-        public double ToMetersPerSecond(){return c(MS);}
-        public double ToMilesPerHour(){return c(MIH);}
-        public double ToMilesPerMinute(){return c(MIM);}
-        public double ToMilesPerSecond(){return c(MIS);}
-        public double ToMillimetersPerHour(){return c(MMH);}
-        public double ToMillimetersPerMinute(){return c(MMM);}
-        public double ToMillimetersPerSecond(){return c(MMS);}
-        public double ToSecondCosmicVelocity(){return c(CV2);}
-        public double ToSoundsInAir(){return c(SA);}
-        public double ToSoundsInWater(){return c(SW);}
-        public double ToThirdCosmicVelocity(){return c(CV3);}
-        public double ToYardsPerHour(){return c(YH);}
-        public double ToYardsPerMinute(){return c(YM);}
-        public double ToYardsPerSecond(){return c(YS);}
+        #endregion
     }
 
 }

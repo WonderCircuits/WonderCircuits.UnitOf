@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.FuelEconomy()
     /// 
     /// Ex: double foo = new UnitOf.FuelEconomy().FromMetersPerCubicMeter(1.25).ToMetersPerLiter(); //One line conversion from 1.25 MetersPerCubicMeter to MetersPerLiter
     /// </summary>
     [Serializable]
-    public class FuelEconomy : ConverterBase{
-
+    public class FuelEconomy : UnitConverterBase
+    {
         #region Constants
         internal static readonly double CML = 1e5;                //Centimeter per Liter
         internal static readonly double DAML = 1e2;               //Dekameter per Liter
@@ -43,89 +46,85 @@ namespace WonderCircuits.UnitOf {
 
         #endregion
 
-        /// <summary>
-        /// Method to perform all conversions within FuelEconomy class.
-        /// All "To" methods within FuelEconomy use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        #region From Methods
+        public FuelEconomy FromCentimetersPerLiter(double v) { return From(v, CML, "CML"); }
+        public FuelEconomy FromDekametersPerLiter(double v) { return From(v, DAML, "DAML"); }
+        public FuelEconomy FromExametersPerLiter(double v) { return From(v, EML, "EML"); }
+        public FuelEconomy FromGigametersPerLiter(double v) { return From(v, GML, "GML"); }
+        public FuelEconomy FromHectometersPerLiter(double v) { return From(v, HML, "HML"); }
+        public FuelEconomy FromKilometersPerGallonUK(double v) { return From(v, KMGALUK, "KMGALUK"); }
+        public FuelEconomy FromKilometersPerGallonUS(double v) { return From(v, KMGALUS, "KMGALUS"); }
+        public FuelEconomy FromKilometersPerLiter(double v) { return From(v, KML, "KML"); }
+        public FuelEconomy FromMegametersPerLiter(double v) { return From(v, MML, "MML"); }
+        public FuelEconomy FromMetersPerCubicCentimeter(double v) { return From(v, MCM, "MCM"); }
+        public FuelEconomy FromMetersPerCubicFoot(double v) { return From(v, MFT, "MFT"); }
+        public FuelEconomy FromMetersPerCubicInch(double v) { return From(v, MIN, "MIN"); }
+        public FuelEconomy FromMetersPerCubicMeter(double v) { return From(v, MM, "MM"); }
+        public FuelEconomy FromMetersPerCubicYard(double v) { return From(v, MYD, "MYD"); }
+        public FuelEconomy FromMetersPerCupUK(double v) { return From(v, MCUPUK, "MCUPUK"); }
+        public FuelEconomy FromMetersPerCupUS(double v) { return From(v, MCUPUS, "MCUPUS"); }
+        public FuelEconomy FromMetersPerFluidOunceUK(double v) { return From(v, MFOZUK, "MFOZUK"); }
+        public FuelEconomy FromMetersPerFluidOunceUS(double v) { return From(v, MFOZUS, "MFOZUS"); }
+        public FuelEconomy FromMetersPerGallonUK(double v) { return From(v, MGALUK, "MGALUK"); }
+        public FuelEconomy FromMetersPerGallonUS(double v) { return From(v, MGALUS, "MGALUS"); }
+        public FuelEconomy FromMetersPerLiter(double v) { return From(v, ML, "ML"); }
+        public FuelEconomy FromMetersPerPintUK(double v) { return From(v, MPTUK, "MPTUK"); }
+        public FuelEconomy FromMetersPerPintUS(double v) { return From(v, MPTUS, "MPTUS"); }
+        public FuelEconomy FromMetersPerQuartUK(double v) { return From(v, MQTUK, "MQTUK"); }
+        public FuelEconomy FromMetersPerQuartUS(double v) { return From(v, MQTUS, "MQTUS"); }
+        public FuelEconomy FromMilesPerGallonUK(double v) { return From(v, MIGALUK, "MIGALUK"); }
+        public FuelEconomy FromMilesPerGallonUS(double v) { return From(v, MIGALUS, "MIGALUS"); }
+        public FuelEconomy FromMilesPerLiterUS(double v) { return From(v, MIL, "MIL"); }
+        public FuelEconomy FromNauticalMilesPerGallonUS(double v) { return From(v, NMIGAL, "NMIGAL"); }
+        public FuelEconomy FromNauticalMilesPerLiter(double v) { return From(v, NMIL, "NMIL"); }
+        public FuelEconomy FromPetametersPerLiter(double v) { return From(v, PML, "PML"); }
+        public FuelEconomy FromTerametersPerLiter(double v) { return From(v, TML, "TML"); }
+
+        private FuelEconomy From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
         }
+        #endregion
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.FuelEconomy foo = new UnitOf.FuelEconomy().FromMetersPerCubicMeter(1.25); //Variable "foo" will be able to convert 1.25 MetersPerCubicMeter into any unit of FuelEconomy
-        /// </summary>
-        public FuelEconomy FromCentimetersPerLiter(double v){return s(this,v,CML,"CML");}
-        public FuelEconomy FromDekametersPerLiter(double v){return s(this,v,DAML,"DAML");}
-        public FuelEconomy FromExametersPerLiter(double v){return s(this,v,EML,"EML");}
-        public FuelEconomy FromGigametersPerLiter(double v){return s(this,v,GML,"GML");}
-        public FuelEconomy FromHectometersPerLiter(double v){return s(this,v,HML,"HML");}
-        public FuelEconomy FromKilometersPerGallonUK(double v){return s(this, v, KMGALUK, "KMGALUK");}
-        public FuelEconomy FromKilometersPerGallonUS(double v){return s(this,v,KMGALUS,"KMGALUS");}
-        public FuelEconomy FromKilometersPerLiter(double v){return s(this,v,KML,"KML");}
-        public FuelEconomy FromMegametersPerLiter(double v){return s(this,v,MML,"MML");}
-        public FuelEconomy FromMetersPerCubicCentimeter(double v){return s(this, v, MCM, "MCM");}
-        public FuelEconomy FromMetersPerCubicFoot(double v){return s(this, v, MFT, "MFT");}
-        public FuelEconomy FromMetersPerCubicInch(double v){return s(this, v, MIN, "MIN");}
-        public FuelEconomy FromMetersPerCubicMeter(double v){return s(this, v, MM, "MM");}
-        public FuelEconomy FromMetersPerCubicYard(double v){return s(this, v, MYD, "MYD");}
-        public FuelEconomy FromMetersPerCupUK(double v){return s(this,v,MCUPUK,"MCUPUK");}
-        public FuelEconomy FromMetersPerCupUS(double v){return s(this,v,MCUPUS,"MCUPUS");}
-        public FuelEconomy FromMetersPerFluidOunceUK(double v){return s(this,v,MFOZUK,"MFOZUK");}
-        public FuelEconomy FromMetersPerFluidOunceUS(double v){return s(this,v,MFOZUS,"MFOZUS");}
-        public FuelEconomy FromMetersPerGallonUK(double v){return s(this,v,MGALUK,"MGALUK");}
-        public FuelEconomy FromMetersPerGallonUS(double v){return s(this, v, MGALUS, "MGALUS");}
-        public FuelEconomy FromMetersPerLiter(double v){return s(this,v,ML,"ML");}
-        public FuelEconomy FromMetersPerPintUK(double v){return s(this,v,MPTUK,"MPTUK");}
-        public FuelEconomy FromMetersPerPintUS(double v){return s(this,v,MPTUS,"MPTUS");}
-        public FuelEconomy FromMetersPerQuartUK(double v){return s(this,v,MQTUK,"MQTUK");}
-        public FuelEconomy FromMetersPerQuartUS(double v){return s(this,v,MQTUS,"MQTUS");}
-        public FuelEconomy FromMilesPerGallonUK(double v){return s(this,v,MIGALUK,"MIGALUK");}
-        public FuelEconomy FromMilesPerGallonUS(double v){return s(this,v,MIGALUS,"MIGALUS");}
-        public FuelEconomy FromMilesPerLiterUS(double v){return s(this,v,MIL,"MIL");}
-        public FuelEconomy FromNauticalMilesPerGallonUS(double v){return s(this,v,NMIGAL,"NMIGAL");}
-        public FuelEconomy FromNauticalMilesPerLiter(double v){return s(this,v,NMIL,"NMIL");}
-        public FuelEconomy FromPetametersPerLiter(double v){return s(this,v,PML,"PML");}
-        public FuelEconomy FromTerametersPerLiter(double v){return s(this,v,TML,"TML");}
+        #region To Methods
+        public double ToCentimetersPerLiter() { return To(CML); }
+        public double ToDekametersPerLiter() { return To(DAML); }
+        public double ToExametersPerLiter() { return To(EML); }
+        public double ToGigametersPerLiter() { return To(GML); }
+        public double ToHectometersPerLiter() { return To(HML); }
+        public double ToKilometersPerGallonUK() { return To(KMGALUK); }
+        public double ToKilometersPerGallonUS() { return To(KMGALUS); }
+        public double ToKilometersPerLiter() { return To(KML); }
+        public double ToMegametersPerLiter() { return To(MML); }
+        public double ToMetersPerCubicCentimeter() { return To(MCM); }
+        public double ToMetersPerCubicFoot() { return To(MFT); }
+        public double ToMetersPerCubicInch() { return To(MIN); }
+        public double ToMetersPerCubicMeter() { return To(MM); }
+        public double ToMetersPerCubicYard() { return To(MYD); }
+        public double ToMetersPerCupUK() { return To(MCUPUK); }
+        public double ToMetersPerCupUS() { return To(MCUPUS); }
+        public double ToMetersPerFluidOunceUK() { return To(MFOZUK); }
+        public double ToMetersPerFluidOunceUS() { return To(MFOZUS); }
+        public double ToMetersPerGallonUK() { return To(MGALUK); }
+        public double ToMetersPerGallonUS() { return To(MGALUS); }
+        public double ToMetersPerLiter() { return To(ML); }
+        public double ToMetersPerPintUK() { return To(MPTUK); }
+        public double ToMetersPerPintUS() { return To(MPTUS); }
+        public double ToMetersPerQuartUK() { return To(MQTUK); }
+        public double ToMetersPerQuartUS() { return To(MQTUS); }
+        public double ToMilesPerGallonUK() { return To(MIGALUK); }
+        public double ToMilesPerGallonUS() { return To(MIGALUS); }
+        public double ToMilesPerLiterUS() { return To(MIL); }
+        public double ToNauticalMilesPerGallonUS() { return To(NMIGAL); }
+        public double ToNauticalMilesPerLiter() { return To(NMIL); }
+        public double ToPetametersPerLiter() { return To(PML); }
+        public double ToTerametersPerLiter() { return To(TML); }
 
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToMetersPerLiter(); //Variable "bar" being of type UnitOf.FuelEconomy with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.FuelEconomy().FromMetersPerCubicMeter(1.25).ToMetersPerLiter(); //One line conversion from 1.25 MetersPerCubicMeter to MetersPerLiter
-        /// </summary>
-        public double ToCentimetersPerLiter(){return c(CML);}
-        public double ToDekametersPerLiter(){return c(DAML);}
-        public double ToExametersPerLiter(){return c(EML);}
-        public double ToGigametersPerLiter(){return c(GML);}
-        public double ToHectometersPerLiter(){return c(HML);}
-        public double ToKilometersPerGallonUK(){return c(KMGALUK);}
-        public double ToKilometersPerGallonUS(){return c(KMGALUS);}
-        public double ToKilometersPerLiter(){return c(KML);}
-        public double ToMegametersPerLiter(){return c(MML);}
-        public double ToMetersPerCubicCentimeter(){return c(MCM);}
-        public double ToMetersPerCubicFoot(){return c(MFT);}
-        public double ToMetersPerCubicInch(){return c(MIN);}
-        public double ToMetersPerCubicMeter(){return c(MM);}
-        public double ToMetersPerCubicYard(){return c(MYD);}
-        public double ToMetersPerCupUK(){return c(MCUPUK);}
-        public double ToMetersPerCupUS(){return c(MCUPUS);}
-        public double ToMetersPerFluidOunceUK(){return c(MFOZUK);}
-        public double ToMetersPerFluidOunceUS(){return c(MFOZUS);}
-        public double ToMetersPerGallonUK(){return c(MGALUK);}
-        public double ToMetersPerGallonUS(){return c(MGALUS);}
-        public double ToMetersPerLiter(){return c(ML);}
-        public double ToMetersPerPintUK(){return c(MPTUK);}
-        public double ToMetersPerPintUS(){return c(MPTUS);}
-        public double ToMetersPerQuartUK(){return c(MQTUK);}
-        public double ToMetersPerQuartUS(){return c(MQTUS);}
-        public double ToMilesPerGallonUK(){return c(MIGALUK);}
-        public double ToMilesPerGallonUS(){return c(MIGALUS);}
-        public double ToMilesPerLiterUS(){return c(MIL);}
-        public double ToNauticalMilesPerGallonUS(){return c(NMIGAL);}
-        public double ToNauticalMilesPerLiter(){return c(NMIL);}
-        public double ToPetametersPerLiter(){return c(PML);}
-        public double ToTerametersPerLiter(){return c(TML);}
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
+        }
+        #endregion
     }
 }

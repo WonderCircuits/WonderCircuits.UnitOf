@@ -1,11 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Torque()
     /// 
     /// Ex: double foo = new UnitOf.Torque().FromNewtonMeters(1.25).ToGramMeters(); //One line conversion from 1.25 NewtonMeters to GramMeters
     /// </summary>
     [Serializable]
-    public class Torque : ConverterBase{
+    public class Torque : UnitConverterBase
+    {
         #region Constants
         internal static readonly double DYNCM = 9.80665e7;        //Dyne Centimeter
         internal static readonly double DYNM = 9.80665e5;         //Dyne Meter
@@ -26,59 +30,57 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double LBFIN = 86.79616290684;   //Pound Force Inch
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within Torque class.
-        /// All "To" methods within Torque use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+
+        #region From Methods
+        public Torque FromDyneCentimeters(double v) { return From(v, DYNCM, "DYNCM"); }
+        public Torque FromDyneMeters(double v) { return From(v, DYNM, "DYNM"); }
+        public Torque FromDyneMillimeters(double v) { return From(v, DYNMM, "DYNMM"); }
+        public Torque FromGramCentimeters(double v) { return From(v, GFCM, "GFCM"); }
+        public Torque FromGramMeters(double v) { return From(v, GFM, "GFM"); }
+        public Torque FromGramMillimeters(double v) { return From(v, GFMM, "GFMM"); }
+        public Torque FromKilogramCentimeters(double v) { return From(v, KGFCM, "KGFCM"); }
+        public Torque FromKilogramMeters(double v) { return From(v, KGFM, "KGFM"); }
+        public Torque FromKilogramMillimeters(double v) { return From(v, KGFMM, "KGFMM"); }
+        public Torque FromKilonewtonMeters(double v) { return From(v, KNM, "KNM"); }
+        public Torque FromNewtonCentimeters(double v) { return From(v, NCM, "NCM"); }
+        public Torque FromNewtonMeters(double v) { return From(v, NM, "NM"); }
+        public Torque FromNewtonMillimeters(double v) { return From(v, NMM, "NMM"); }
+        public Torque FromOunceFeet(double v) { return From(v, OZFFT, "OZFFT"); }
+        public Torque FromOunceInches(double v) { return From(v, OZFIN, "OZFIN"); }
+        public Torque FromPoundFeet(double v) { return From(v, LBFFT, "LBFFT"); }
+        public Torque FromPoundInches(double v) { return From(v, LBFIN, "LBFIN"); }
+
+        private Torque From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToDyneCentimeters() { return To(DYNCM); }
+        public double ToDyneMeters() { return To(DYNM); }
+        public double ToDyneMillimeters() { return To(DYNMM); }
+        public double ToGramCentimeters() { return To(GFCM); }
+        public double ToGramMeters() { return To(GFM); }
+        public double ToGramMillimeters() { return To(GFMM); }
+        public double ToKilogramCentimeters() { return To(KGFCM); }
+        public double ToKilogramMeters() { return To(KGFM); }
+        public double ToKilogramMillimeters() { return To(KGFMM); }
+        public double ToKilonewtonMeters() { return To(KNM); }
+        public double ToNewtonCentimeters() { return To(NCM); }
+        public double ToNewtonMeters() { return To(NM); }
+        public double ToNewtonMillimeters() { return To(NMM); }
+        public double ToOunceFeet() { return To(OZFFT); }
+        public double ToOunceInches() { return To(OZFIN); }
+        public double ToPoundFeet() { return To(LBFFT); }
+        public double ToPoundInches() { return To(LBFIN); }
+
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Torque foo = new UnitOf.Torque().FromNewtonMeters(1.25); //Variable "foo" will be able to convert 1.25 NewtonMeters into any unit of Torque
-        /// </summary>
-        public Torque FromDyneCentimeters(double v){return s(this,v,DYNCM,"DYNCM");}
-        public Torque FromDyneMeters(double v){return s(this,v,DYNM,"DYNM");}
-        public Torque FromDyneMillimeters(double v){return s(this,v,DYNMM,"DYNMM");}
-        public Torque FromGramCentimeters(double v){return s(this,v,GFCM,"GFCM");}
-        public Torque FromGramMeters(double v){return s(this,v,GFM,"GFM");}
-        public Torque FromGramMillimeters(double v){return s(this,v,GFMM,"GFMM");}
-        public Torque FromKilogramCentimeters(double v){return s(this,v,KGFCM,"KGFCM");}
-        public Torque FromKilogramMeters(double v){return s(this,v,KGFM,"KGFM");}
-        public Torque FromKilogramMillimeters(double v){return s(this,v,KGFMM,"KGFMM");}
-        public Torque FromKilonewtonMeters(double v){return s(this,v,KNM,"KNM");}
-        public Torque FromNewtonCentimeters(double v){return s(this,v,NCM,"NCM");}
-        public Torque FromNewtonMeters(double v){return s(this,v,NM,"NM");}
-        public Torque FromNewtonMillimeters(double v){return s(this,v,NMM,"NMM");}
-        public Torque FromOunceFeet(double v){return s(this,v,OZFFT,"OZFFT");}
-        public Torque FromOunceInches(double v){return s(this,v,OZFIN,"OZFIN");}
-        public Torque FromPoundFeet(double v){return s(this,v,LBFFT,"LBFFT");}
-        public Torque FromPoundInches(double v){return s(this,v,LBFIN,"LBFIN");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToGramMeters(); //Variable "bar" being of type UnitOf.Torque with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Torque().FromNewtonMeters(1.25).ToGramMeters(); //One line conversion from 1.25 NewtonMeters to GramMeters
-        /// </summary>
-        public double ToDyneCentimeters(){return c(DYNCM);}
-        public double ToDyneMeters(){return c(DYNM);}
-        public double ToDyneMillimeters(){return c(DYNMM);}
-        public double ToGramCentimeters(){return c(GFCM);}
-        public double ToGramMeters(){return c(GFM);}
-        public double ToGramMillimeters(){return c(GFMM);}
-        public double ToKilogramCentimeters(){return c(KGFCM);}
-        public double ToKilogramMeters(){return c(KGFM);}
-        public double ToKilogramMillimeters(){return c(KGFMM);}
-        public double ToKilonewtonMeters(){return c(KNM);}
-        public double ToNewtonCentimeters(){return c(NCM);}
-        public double ToNewtonMeters(){return c(NM);}
-        public double ToNewtonMillimeters(){return c(NMM);}
-        public double ToOunceFeet(){return c(OZFFT);}
-        public double ToOunceInches(){return c(OZFIN);}
-        public double ToPoundFeet(){return c(LBFFT);}
-        public double ToPoundInches(){return c(LBFIN);}
+        #endregion
     }
 }

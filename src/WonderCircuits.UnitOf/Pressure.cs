@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Pressure()
     /// 
     /// Ex: double foo = new UnitOf.Pressure().FromPascals(1.25).ToKSI(); //One line conversion from 1.25 Pascals to KSI
     /// </summary>
     [Serializable]
-    public class Pressure : ConverterBase{
-
+    public class Pressure : UnitConverterBase
+    {
         #region Constants
         internal static readonly double APA = 1e18;               //Attopascal
         internal static readonly double BAR = 1e-5;               //Bar
@@ -70,143 +73,140 @@ namespace WonderCircuits.UnitOf {
 
         #endregion
 
-        /// <summary>
-        /// Method to perform all conversions within Pressure class.
-        /// All "To" methods within Pressure use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        #region From Methods
+        public Pressure FromAttopascals(double v) { return From(v, APA, "APA"); }
+        public Pressure FromBars(double v) { return From(v, BAR, "BAR"); }
+        public Pressure FromBaryes(double v) { return From(v, BA, "BA"); }
+        public Pressure FromCentimetersOfMercury0C(double v) { return From(v, CMHG, "CMHG"); }
+        public Pressure FromCentimetersOfWater4C(double v) { return From(v, CMW4, "CMW4"); }
+        public Pressure FromCentipascals(double v) { return From(v, CPA, "CPA"); }
+        public Pressure FromDecibars(double v) { return From(v, DBAR, "DBAR"); }
+        public Pressure FromDecipascals(double v) { return From(v, DPA, "DPA"); }
+        public Pressure FromDekapascals(double v) { return From(v, DAPA, "DAPA"); }
+        public Pressure FromDynesPerSquareCentimeter(double v) { return From(v, DYNCM, "DYNCM"); }
+        public Pressure FromExapascals(double v) { return From(v, EPA, "EPA"); }
+        public Pressure FromFeetOfSeaWater(double v) { return From(v, FSW, "FSW"); }
+        public Pressure FromFeetOfWater4C(double v) { return From(v, FTW4, "FTW4"); }
+        public Pressure FromFeetOfWater60F(double v) { return From(v, FTW60, "FTW60"); }
+        public Pressure FromFemtopascals(double v) { return From(v, FPA, "FPA"); }
+        public Pressure FromGigapascals(double v) { return From(v, GPA, "GPA"); }
+        public Pressure FromGramsPerSquareCentimeter(double v) { return From(v, GFCM, "GFCM"); }
+        public Pressure FromHectopascals(double v) { return From(v, HPA, "HPA"); }
+        public Pressure FromInchesOfMercury32F(double v) { return From(v, INHG32, "INHG32"); }
+        public Pressure FromInchesOfMercury60F(double v) { return From(v, INHG60, "INHG60"); }
+        public Pressure FromInchesOfWater4C(double v) { return From(v, INW4, "INW4"); }
+        public Pressure FromInchesOfWater60F(double v) { return From(v, INW60, "INW60"); }
+        public Pressure FromKSI(double v) { return From(v, KSI, "KSI"); }
+        public Pressure FromKilogramsPerSquareCentimeter(double v) { return From(v, KGFCM, "KGFCM"); }
+        public Pressure FromKilogramsPerSquareMeter(double v) { return From(v, KGFM, "KGFM"); }
+        public Pressure FromKilogramsPerSquareMillimeter(double v) { return From(v, KFGMM, "KFGMM"); }
+        public Pressure FromKilonewtonsPerSquareMeter(double v) { return From(v, KNM, "KNM"); }
+        public Pressure FromKilopascals(double v) { return From(v, KPA, "KPA"); }
+        public Pressure FromKipsPerSquareInch(double v) { return From(v, KIPFIN, "KIPFIN"); }
+        public Pressure FromLongTonsPerSquareFoot(double v) { return From(v, TFFTL, "TFFTL"); }
+        public Pressure FromLongTonsPerSquareInch(double v) { return From(v, TFINL, "TFINL"); }
+        public Pressure FromMegapascals(double v) { return From(v, MPA, "MPA"); }
+        public Pressure FromMetersOfSeaWater(double v) { return From(v, MSW, "MSW"); }
+        public Pressure FromMetersOfWater4C(double v) { return From(v, MW4, "MW4"); }
+        public Pressure FromMicrobars(double v) { return From(v, MUBAR, "MUBAR"); }
+        public Pressure FromMicropascals(double v) { return From(v, MUPA, "MUPA"); }
+        public Pressure FromMillibars(double v) { return From(v, MILBAR, "MILBAR"); }
+        public Pressure FromMillimetersOfMercury0C(double v) { return From(v, MMHG, "MMHG"); }
+        public Pressure FromMillimetersOfWater4C(double v) { return From(v, MMW4, "MMW4"); }
+        public Pressure FromMillipascals(double v) { return From(v, MILPA, "MILPA"); }
+        public Pressure FromNanopascals(double v) { return From(v, NPA, "NPA"); }
+        public Pressure FromNewtonsPerSquareCentimeter(double v) { return From(v, NCM, "NCM"); }
+        public Pressure FromNewtonsPerSquareMeter(double v) { return From(v, NM, "NM"); }
+        public Pressure FromNewtonsPerSquareMillimeter(double v) { return From(v, NMM, "NMM"); }
+        public Pressure FromPSI(double v) { return From(v, PSI, "PSI"); }
+        public Pressure FromPascals(double v) { return From(v, PA, "PA"); }
+        public Pressure FromPetapascals(double v) { return From(v, PEPA, "PEPA"); }
+        public Pressure FromPicopascals(double v) { return From(v, PPA, "PPA"); }
+        public Pressure FromPieze(double v) { return From(v, PIZ, "PIZ"); }
+        public Pressure FromPoundalsPerSquareFoot(double v) { return From(v, PDLFT, "PDLFT"); }
+        public Pressure FromPoundsPerSquareFoot(double v) { return From(v, LBFFT, "LBFFT"); }
+        public Pressure FromPoundsPerSquareInch(double v) { return From(v, LBFIN, "LBFIN"); }
+        public Pressure FromShortTonsPerSquareFoot(double v) { return From(v, TFFTS, "TFFTS"); }
+        public Pressure FromShortTonsPerSquareInch(double v) { return From(v, TFINS, "TFINS"); }
+        public Pressure FromStandardAtmospheres(double v) { return From(v, ATM, "ATM"); }
+        public Pressure FromSthenesPerSquareMeter(double v) { return From(v, SM, "SM"); }
+        public Pressure FromTechnicalAtmospheres(double v) { return From(v, AT, "AT"); }
+        public Pressure FromTerapascals(double v) { return From(v, TPA, "TPA"); }
+        public Pressure FromTorrs(double v) { return From(v, TORR, "TORR"); }
+
+        private Pressure From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
         }
+        #endregion
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Pressure foo = new UnitOf.Pressure().FromPascals(1.25); //Variable "foo" will be able to convert 1.25 Pascals into any unit of Pressure
-        /// </summary>
-        public Pressure FromAttopascals(double v){return s(this, v, APA, "APA");}
-        public Pressure FromBars(double v){return s(this, v, BAR, "BAR");}
-        public Pressure FromBaryes(double v){return s(this, v, BA, "BA");}
-        public Pressure FromCentimetersOfMercury0C(double v){return s(this, v, CMHG, "CMHG");}
-        public Pressure FromCentimetersOfWater4C(double v){return s(this, v, CMW4, "CMW4");}
-        public Pressure FromCentipascals(double v){return s(this, v, CPA, "CPA");}
-        public Pressure FromDecibars(double v){return s(this, v, DBAR, "DBAR");}
-        public Pressure FromDecipascals(double v){return s(this, v, DPA, "DPA");}
-        public Pressure FromDekapascals(double v){return s(this, v, DAPA, "DAPA");}
-        public Pressure FromDynesPerSquareCentimeter(double v){return s(this, v, DYNCM, "DYNCM");}
-        public Pressure FromExapascals(double v){return s(this, v, EPA, "EPA");}
-        public Pressure FromFeetOfSeaWater(double v){return s(this, v, FSW, "FSW");}
-        public Pressure FromFeetOfWater4C(double v){return s(this, v, FTW4, "FTW4");}
-        public Pressure FromFeetOfWater60F(double v){return s(this, v, FTW60, "FTW60");}
-        public Pressure FromFemtopascals(double v){return s(this, v, FPA, "FPA");}
-        public Pressure FromGigapascals(double v){return s(this, v, GPA, "GPA");}
-        public Pressure FromGramsPerSquareCentimeter(double v){return s(this, v, GFCM, "GFCM");}
-        public Pressure FromHectopascals(double v){return s(this, v, HPA, "HPA");}
-        public Pressure FromInchesOfMercury32F(double v){return s(this, v, INHG32, "INHG32");}
-        public Pressure FromInchesOfMercury60F(double v){return s(this, v, INHG60, "INHG60");}
-        public Pressure FromInchesOfWater4C(double v){return s(this, v, INW4, "INW4");}
-        public Pressure FromInchesOfWater60F(double v){return s(this, v, INW60, "INW60");}
-        public Pressure FromKSI(double v){return s(this,v,KSI,"KSI");}
-        public Pressure FromKilogramsPerSquareCentimeter(double v){return s(this, v, KGFCM, "KGFCM");}
-        public Pressure FromKilogramsPerSquareMeter(double v){return s(this, v, KGFM, "KGFM");}
-        public Pressure FromKilogramsPerSquareMillimeter(double v){return s(this, v, KFGMM, "KFGMM");}
-        public Pressure FromKilonewtonsPerSquareMeter(double v){return s(this, v, KNM, "KNM");}
-        public Pressure FromKilopascals(double v){return s(this, v, KPA, "KPA");}
-        public Pressure FromKipsPerSquareInch(double v){return s(this, v, KIPFIN, "KIPFIN");}
-        public Pressure FromLongTonsPerSquareFoot(double v){return s(this, v, TFFTL, "TFFTL");}
-        public Pressure FromLongTonsPerSquareInch(double v){return s(this, v, TFINL, "TFINL");}
-        public Pressure FromMegapascals(double v){return s(this, v, MPA, "MPA");}
-        public Pressure FromMetersOfSeaWater(double v){return s(this, v, MSW, "MSW");}
-        public Pressure FromMetersOfWater4C(double v){return s(this, v, MW4, "MW4");}
-        public Pressure FromMicrobars(double v){return s(this, v, MUBAR, "MUBAR");}
-        public Pressure FromMicropascals(double v){return s(this, v, MUPA, "MUPA");}
-        public Pressure FromMillibars(double v){return s(this, v, MILBAR, "MILBAR");}
-        public Pressure FromMillimetersOfMercury0C(double v){return s(this, v, MMHG, "MMHG");}
-        public Pressure FromMillimetersOfWater4C(double v){return s(this, v, MMW4, "MMW4");}
-        public Pressure FromMillipascals(double v){return s(this, v, MILPA, "MILPA");}
-        public Pressure FromNanopascals(double v){return s(this, v, NPA, "NPA");}
-        public Pressure FromNewtonsPerSquareCentimeter(double v){return s(this, v, NCM, "NCM");}
-        public Pressure FromNewtonsPerSquareMeter(double v){return s(this, v, NM, "NM");}
-        public Pressure FromNewtonsPerSquareMillimeter(double v){return s(this, v, NMM, "NMM");}
-        public Pressure FromPSI(double v){return s(this,v,PSI,"PSI");}
-        public Pressure FromPascals(double v){return s(this, v, PA, "PA");}
-        public Pressure FromPetapascals(double v){return s(this, v, PEPA, "PEPA");}
-        public Pressure FromPicopascals(double v){return s(this, v, PPA, "PPA");}
-        public Pressure FromPieze(double v){return s(this,v,PIZ,"PIZ");}
-        public Pressure FromPoundalsPerSquareFoot(double v){return s(this, v, PDLFT, "PDLFT");}
-        public Pressure FromPoundsPerSquareFoot(double v){return s(this, v, LBFFT, "LBFFT");}
-        public Pressure FromPoundsPerSquareInch(double v){return s(this, v, LBFIN, "LBFIN");}
-        public Pressure FromShortTonsPerSquareFoot(double v){return s(this, v, TFFTS, "TFFTS");}
-        public Pressure FromShortTonsPerSquareInch(double v){return s(this, v, TFINS, "TFINS");}
-        public Pressure FromStandardAtmospheres(double v){return s(this, v, ATM, "ATM");}
-        public Pressure FromSthenesPerSquareMeter(double v){return s(this, v, SM, "SM");}
-        public Pressure FromTechnicalAtmospheres(double v){return s(this, v, AT, "AT");}
-        public Pressure FromTerapascals(double v){return s(this, v, TPA, "TPA");}
-        public Pressure FromTorrs(double v){return s(this, v, TORR, "TORR");}
+        #region To Methods
+        public double ToAttopascals() { return To(APA); }
+        public double ToBars() { return To(BAR); }
+        public double ToBaryes() { return To(BA); }
+        public double ToCentimetersOfMercury0C() { return To(CMHG); }
+        public double ToCentimetersOfWater4C() { return To(CMW4); }
+        public double ToCentipascals() { return To(CPA); }
+        public double ToDecibars() { return To(DBAR); }
+        public double ToDecipascals() { return To(DPA); }
+        public double ToDekapascals() { return To(DAPA); }
+        public double ToDynesPerSquareCentimeter() { return To(DYNCM); }
+        public double ToExapascals() { return To(EPA); }
+        public double ToFeetOfSeaWater() { return To(FSW); }
+        public double ToFeetOfWater4C() { return To(FTW4); }
+        public double ToFeetOfWater60F() { return To(FTW60); }
+        public double ToFemtopascals() { return To(FPA); }
+        public double ToGigapascals() { return To(GPA); }
+        public double ToGramsPerSquareCentimeter() { return To(GFCM); }
+        public double ToHectopascals() { return To(HPA); }
+        public double ToInchesOfMercury32F() { return To(INHG32); }
+        public double ToInchesOfMercury60F() { return To(INHG60); }
+        public double ToInchesOfWater4C() { return To(INW4); }
+        public double ToInchesOfWater60F() { return To(INW60); }
+        public double ToKSI() { return To(KSI); }
+        public double ToKilogramsPerSquareCentimeter() { return To(KGFCM); }
+        public double ToKilogramsPerSquareMeter() { return To(KGFM); }
+        public double ToKilogramsPerSquareMillimeter() { return To(KFGMM); }
+        public double ToKilonewtonsPerSquareMeter() { return To(KNM); }
+        public double ToKilopascals() { return To(KPA); }
+        public double ToKipsPerSquareInch() { return To(KIPFIN); }
+        public double ToLongTonsPerSquareFoot() { return To(TFFTL); }
+        public double ToLongTonsPerSquareInch() { return To(TFINL); }
+        public double ToMegapascals() { return To(MPA); }
+        public double ToMetersOfSeaWater() { return To(MSW); }
+        public double ToMetersOfWater4C() { return To(MW4); }
+        public double ToMicrobars() { return To(MUBAR); }
+        public double ToMicropascals() { return To(MUPA); }
+        public double ToMillibars() { return To(MILBAR); }
+        public double ToMillimetersOfMercury0C() { return To(MMHG); }
+        public double ToMillimetersOfWater4C() { return To(MMW4); }
+        public double ToMillipascals() { return To(MILPA); }
+        public double ToNanopascals() { return To(NPA); }
+        public double ToNewtonsPerSquareCentimeter() { return To(NCM); }
+        public double ToNewtonsPerSquareMeter() { return To(NM); }
+        public double ToNewtonsPerSquareMillimeter() { return To(NMM); }
+        public double ToPSI() { return To(PSI); }
+        public double ToPascals() { return To(PA); }
+        public double ToPetapascals() { return To(PEPA); }
+        public double ToPicopascals() { return To(PPA); }
+        public double ToPieze() { return To(PIZ); }
+        public double ToPoundalsPerSquareFoot() { return To(PDLFT); }
+        public double ToPoundsPerSquareFoot() { return To(LBFFT); }
+        public double ToPoundsPerSquareInch() { return To(LBFIN); }
+        public double ToShortTonsPerSquareFoot() { return To(TFFTS); }
+        public double ToShortTonsPerSquareInch() { return To(TFINS); }
+        public double ToStandardAtmospheres() { return To(ATM); }
+        public double ToSthenesPerSquareMeter() { return To(SM); }
+        public double ToTechnicalAtmospheres() { return To(AT); }
+        public double ToTerapascals() { return To(TPA); }
+        public double ToTorrs() { return To(TORR); }
 
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToKSI(); //Variable "bar" being of type UnitOf.Pressure with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Pressure().FromPascals(1.25).ToKSI(); //One line conversion from 1.25 Pascals to KSI
-        /// </summary>
-        public double ToAttopascals(){return c(APA);}
-        public double ToBars(){return c(BAR);}
-        public double ToBaryes(){return c(BA);}
-        public double ToCentimetersOfMercury0C(){return c(CMHG);}
-        public double ToCentimetersOfWater4C(){return c(CMW4);}
-        public double ToCentipascals(){return c(CPA);}
-        public double ToDecibars(){return c(DBAR);}
-        public double ToDecipascals(){return c(DPA);}
-        public double ToDekapascals(){return c(DAPA);}
-        public double ToDynesPerSquareCentimeter(){return c(DYNCM);}
-        public double ToExapascals(){return c(EPA);}
-        public double ToFeetOfSeaWater(){return c(FSW);}
-        public double ToFeetOfWater4C(){return c(FTW4);}
-        public double ToFeetOfWater60F(){return c(FTW60);}
-        public double ToFemtopascals(){return c(FPA);}
-        public double ToGigapascals(){return c(GPA);}
-        public double ToGramsPerSquareCentimeter(){return c(GFCM);}
-        public double ToHectopascals(){return c(HPA);}
-        public double ToInchesOfMercury32F(){return c(INHG32);}
-        public double ToInchesOfMercury60F(){return c(INHG60);}
-        public double ToInchesOfWater4C(){return c(INW4);}
-        public double ToInchesOfWater60F(){return c(INW60);}
-        public double ToKSI(){return c(KSI);}
-        public double ToKilogramsPerSquareCentimeter(){return c(KGFCM);}
-        public double ToKilogramsPerSquareMeter(){return c(KGFM);}
-        public double ToKilogramsPerSquareMillimeter(){return c(KFGMM);}
-        public double ToKilonewtonsPerSquareMeter(){return c(KNM);}
-        public double ToKilopascals(){return c(KPA);}
-        public double ToKipsPerSquareInch(){return c(KIPFIN);}
-        public double ToLongTonsPerSquareFoot(){return c(TFFTL);}
-        public double ToLongTonsPerSquareInch(){return c(TFINL);}
-        public double ToMegapascals(){return c(MPA);}
-        public double ToMetersOfSeaWater(){return c(MSW);}
-        public double ToMetersOfWater4C(){return c(MW4);}
-        public double ToMicrobars(){return c(MUBAR);}
-        public double ToMicropascals(){return c(MUPA);}
-        public double ToMillibars(){return c(MILBAR);}
-        public double ToMillimetersOfMercury0C(){return c(MMHG);}
-        public double ToMillimetersOfWater4C(){return c(MMW4);}
-        public double ToMillipascals(){return c(MILPA);}
-        public double ToNanopascals(){return c(NPA);}
-        public double ToNewtonsPerSquareCentimeter(){return c(NCM);}
-        public double ToNewtonsPerSquareMeter(){return c(NM);}
-        public double ToNewtonsPerSquareMillimeter(){return c(NMM);}
-        public double ToPSI(){return c(PSI);}
-        public double ToPascals(){return c(PA);}
-        public double ToPetapascals(){return c(PEPA);}
-        public double ToPicopascals(){return c(PPA);}
-        public double ToPieze(){return c(PIZ);}
-        public double ToPoundalsPerSquareFoot(){return c(PDLFT);}
-        public double ToPoundsPerSquareFoot(){return c(LBFFT);}
-        public double ToPoundsPerSquareInch(){return c(LBFIN);}
-        public double ToShortTonsPerSquareFoot(){return c(TFFTS);}
-        public double ToShortTonsPerSquareInch(){return c(TFINS);}
-        public double ToStandardAtmospheres(){return c(ATM);}
-        public double ToSthenesPerSquareMeter(){return c(SM);}
-        public double ToTechnicalAtmospheres(){return c(AT);}
-        public double ToTerapascals(){return c(TPA);}
-        public double ToTorrs(){return c(TORR);}
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
+        }
+        #endregion
+
     }
 }

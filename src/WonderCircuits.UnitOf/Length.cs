@@ -1,11 +1,14 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Length()
     /// 
     /// Ex: double foo = new UnitOf.Length().FromMeters(1.25).ToFeet(); //One line conversion from 1.25 Meters to Feet
     /// </summary>
     [Serializable]
-    public class Length : ConverterBase
+    public class Length : UnitConverterBase
     {
         #region Constants
         internal static readonly double A = 1e10;                     //Angstrom
@@ -63,136 +66,133 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double YD = 1/0.9144;                //Yard
 
         #endregion
+
+        #region From Methods
+        public Length FromAngstroms(double v) { return From(v, A, "A"); }
+        public Length FromAttometers(double v) { return From(v, AM, "AM"); }
+        public Length FromBarleycorns(double v) { return From(v, BC, "BC"); }
+        public Length FromCablesImperial(double v) { return From(v, CBLIMP, "CBLIMP"); }
+        public Length FromCablesInternational(double v) { return From(v, CBLIN, "CBLIN"); }
+        public Length FromCablesUSCustomary(double v) { return From(v, CBLUS, "CBLUS"); }
+        public Length FromCaliber(double v) { return From(v, CL, "CL"); }
+        public Length FromCentiinches(double v) { return From(v, CIN, "CIN"); }
+        public Length FromCentimeters(double v) { return From(v, CM, "CM"); }
+        public Length FromChains(double v) { return From(v, CH, "CH"); }
+        public Length FromCubits(double v) { return From(v, CU, "CU"); }
+        public Length FromDecimeters(double v) { return From(v, DM, "DM"); }
+        public Length FromDekameters(double v) { return From(v, DAM, "DAM"); }
+        public Length FromElls(double v) { return From(v, ELL, "ELL"); }
+        public Length FromExameters(double v) { return From(v, EM, "EM"); }
+        public Length FromFathoms(double v) { return From(v, FTM, "FTM"); }
+        public Length FromFeet(double v) { return From(v, FT, "FT"); }
+        public Length FromFemtometers(double v) { return From(v, FM, "FM"); }
+        public Length FromFingers(double v) { return From(v, FING, "FING"); }
+        public Length FromFurlongs(double v) { return From(v, FUR, "FUR"); }
+        public Length FromGigameters(double v) { return From(v, GM, "GM"); }
+        public Length FromHands(double v) { return From(v, HAND, "HAND"); }
+        public Length FromHectometers(double v) { return From(v, HM, "HM"); }
+        public Length FromInches(double v) { return From(v, IN, "IN"); }
+        public Length FromKilometers(double v) { return From(v, KM, "KM"); }
+        public Length FromKiloyards(double v) { return From(v, KYD, "KYD"); }
+        public Length FromLeagues(double v) { return From(v, LEA, "LEA"); }
+        public Length FromLightYears(double v) { return From(v, LY, "LY"); }
+        public Length FromLinks(double v) { return From(v, LNK, "LNK"); }
+        public Length FromMegameters(double v) { return From(v, MM, "MM"); }
+        public Length FromMeters(double v) { return From(v, M, "M"); }
+        public Length FromMicroinches(double v) { return From(v, MUIN, "MUIN"); }
+        public Length FromMicrometers(double v) { return From(v, MUM, "MUM"); }
+        public Length FromMicrons(double v) { return From(v, MURM, "MURM"); }
+        public Length FromMiles(double v) { return From(v, MI, "MI"); }
+        public Length FromMillimeters(double v) { return From(v, MILM, "MILM"); }
+        public Length FromNails(double v) { return From(v, NAIL, "NAIL"); }
+        public Length FromNanometers(double v) { return From(v, NM, "NM"); }
+        public Length FromNauticalLeaguesInternational(double v) { return From(v, NLEAIN, "NLEAIN"); }
+        public Length FromNauticalLeaguesUK(double v) { return From(v, NLEAUK, "NLEAUK"); }
+        public Length FromNauticalMilesInternational(double v) { return From(v, NMIINT, "NMIINT"); }
+        public Length FromNauticalMilesUK(double v) { return From(v, NMIUK, "NMIUK"); }
+        public Length FromNauticalMilesUSCustomary(double v) { return From(v, NMIUS, "NMIUS"); }
+        public Length FromPerches(double v) { return From(v, PER, "PER"); }
+        public Length FromPetameters(double v) { return From(v, PEM, "PEM"); }
+        public Length FromPicometers(double v) { return From(v, PM, "PM"); }
+        public Length FromPoles(double v) { return From(v, POL, "POL"); }
+        public Length FromRods(double v) { return From(v, RD, "RD"); }
+        public Length FromRopes(double v) { return From(v, ROPE, "ROPE"); }
+        public Length FromSpans(double v) { return From(v, SPAN, "SPAN"); }
+        public Length FromTerameters(double v) { return From(v, TM, "TM"); }
+        public Length FromThousandthInches(double v) { return From(v, TIN, "TIN"); }
+        public Length FromYards(double v) { return From(v, YD, "YD"); }
+
+        private Length From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToAngstroms() { return To(A); }
+        public double ToAttometers() { return To(AM); }
+        public double ToBarleycorns() { return To(BC); }
+        public double ToCablesImperial() { return To(CBLIMP); }
+        public double ToCablesInternational() { return To(CBLIN); }
+        public double ToCablesUSCustomary() { return To(CBLUS); }
+        public double ToCaliber() { return To(CL); }
+        public double ToCentiinches() { return To(CIN); }
+        public double ToCentimeters() { return To(CM); }
+        public double ToChains() { return To(CH); }
+        public double ToCubits() { return To(CU); }
+        public double ToDecimeters() { return To(DM); }
+        public double ToDekameters() { return To(DAM); }
+        public double ToElls() { return To(ELL); }
+        public double ToExameters() { return To(EM); }
+        public double ToFathoms() { return To(FTM); }
+        public double ToFeet() { return To(FT); }
+        public double ToFemtometers() { return To(FM); }
+        public double ToFingers() { return To(FING); }
+        public double ToFurlongs() { return To(FUR); }
+        public double ToGigameters() { return To(GM); }
+        public double ToHands() { return To(HAND); }
+        public double ToHectometers() { return To(HM); }
+        public double ToInches() { return To(IN); }
+        public double ToKilometers() { return To(KM); }
+        public double ToKiloyards() { return To(KYD); }
+        public double ToLeagues() { return To(LEA); }
+        public double ToLightYears() { return To(LY); }
+        public double ToLinks() { return To(LNK); }
+        public double ToMegameters() { return To(MM); }
+        public double ToMeters() { return To(M); }
+        public double ToMicroinches() { return To(MUIN); }
+        public double ToMicrometers() { return To(MUM); }
+        public double ToMicrons() { return To(MURM); }
+        public double ToMiles() { return To(MI); }
+        public double ToMillimeters() { return To(MILM); }
+        public double ToNails() { return To(NAIL); }
+        public double ToNanometers() { return To(NM); }
+        public double ToNauticalLeaguesInternational() { return To(NLEAIN); }
+        public double ToNauticalLeaguesUK() { return To(NLEAUK); }
+        public double ToNauticalMilesInternational() { return To(NMIINT); }
+        public double ToNauticalMilesUK() { return To(NMIUK); }
+        public double ToNauticalMilesUSCustomary() { return To(NMIUS); }
+        public double ToPerches() { return To(PER); }
+        public double ToPetameters() { return To(PEM); }
+        public double ToPicometers() { return To(PM); }
+        public double ToPoles() { return To(POL); }
+        public double ToRods() { return To(RD); }
+        public double ToRopes() { return To(ROPE); }
+        public double ToSpans() { return To(SPAN); }
+        public double ToTerameters() { return To(TM); }
+        public double ToThousandthInches() { return To(TIN); }
+        public double ToYards() { return To(YD); }
+    
+
         /// <summary>
         /// Method to perform all conversions within Length class.
         /// All "To" methods within Length use this method.
         /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
-
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Length foo = new UnitOf.Length().FromMeters(1.25); //Variable "foo" will be able to convert 1.25 Meters into any unit of Length
-        /// </summary>
-        public Length FromAngstroms(double v){return s(this,v,A,"A");}
-        public Length FromAttometers(double v){return s(this,v,AM,"AM");}
-        public Length FromBarleycorns(double v){return s(this,v,BC,"BC");}
-        public Length FromCablesImperial(double v){return s(this,v,CBLIMP,"CBLIMP");}
-        public Length FromCablesInternational(double v){return s(this,v,CBLIN,"CBLIN");}
-        public Length FromCablesUSCustomary(double v){return s(this,v,CBLUS,"CBLUS");}
-        public Length FromCaliber(double v){return s(this,v,CL,"CL");}
-        public Length FromCentiinches(double v){return s(this,v,CIN,"CIN");}
-        public Length FromCentimeters(double v){return s(this,v,CM,"CM");}
-        public Length FromChains(double v){return s(this,v,CH,"CH");}
-        public Length FromCubits(double v){return s(this,v,CU,"CU");}
-        public Length FromDecimeters(double v){return s(this,v,DM,"DM");}
-        public Length FromDekameters(double v){return s(this,v,DAM,"DAM");}
-        public Length FromElls(double v){return s(this,v,ELL,"ELL");}
-        public Length FromExameters(double v){return s(this,v,EM,"EM");}
-        public Length FromFathoms(double v){return s(this,v,FTM,"FTM");}
-        public Length FromFeet(double v){return s(this,v,FT,"FT");}
-        public Length FromFemtometers(double v){return s(this,v,FM,"FM");}
-        public Length FromFingers(double v){return s(this,v,FING,"FING");}
-        public Length FromFurlongs(double v){return s(this,v,FUR,"FUR");}
-        public Length FromGigameters(double v){return s(this,v,GM,"GM");}
-        public Length FromHands(double v){return s(this,v,HAND,"HAND");}
-        public Length FromHectometers(double v){return s(this,v,HM,"HM");}
-        public Length FromInches(double v){return s(this,v,IN,"IN");}
-        public Length FromKilometers(double v){return s(this,v,KM,"KM");}
-        public Length FromKiloyards(double v){return s(this,v,KYD,"KYD");}
-        public Length FromLeagues(double v){return s(this,v,LEA,"LEA");}
-        public Length FromLightYears(double v){return s(this,v,LY,"LY");}
-        public Length FromLinks(double v){return s(this,v,LNK,"LNK");}
-        public Length FromMegameters(double v){return s(this,v,MM,"MM");}
-        public Length FromMeters(double v){return s(this,v,M,"M");}
-        public Length FromMicroinches(double v){return s(this,v,MUIN,"MUIN");}
-        public Length FromMicrometers(double v){return s(this,v,MUM,"MUM");}
-        public Length FromMicrons(double v){return s(this,v,MURM,"MURM");}
-        public Length FromMiles(double v){return s(this,v,MI,"MI");}
-        public Length FromMillimeters(double v){return s(this,v,MILM,"MILM");}
-        public Length FromNails(double v){return s(this,v,NAIL,"NAIL");}
-        public Length FromNanometers(double v){return s(this,v,NM,"NM");}
-        public Length FromNauticalLeaguesInternational(double v){return s(this,v,NLEAIN,"NLEAIN");}
-        public Length FromNauticalLeaguesUK(double v){return s(this,v,NLEAUK,"NLEAUK");}
-        public Length FromNauticalMilesInternational(double v){return s(this,v,NMIINT,"NMIINT");}
-        public Length FromNauticalMilesUK(double v){return s(this,v,NMIUK,"NMIUK");}
-        public Length FromNauticalMilesUSCustomary(double v){return s(this,v,NMIUS,"NMIUS");}
-        public Length FromPerches(double v){return s(this,v,PER,"PER");}
-        public Length FromPetameters(double v){return s(this,v,PEM,"PEM");}
-        public Length FromPicometers(double v){return s(this,v,PM,"PM");}
-        public Length FromPoles(double v){return s(this,v,POL,"POL");}
-        public Length FromRods(double v){return s(this,v,RD,"RD");}
-        public Length FromRopes(double v){return s(this,v,ROPE,"ROPE");}
-        public Length FromSpans(double v){return s(this,v,SPAN,"SPAN");}
-        public Length FromTerameters(double v){return s(this,v,TM,"TM");}
-        public Length FromThousandthInches(double v){return s(this,v,TIN,"TIN");}
-        public Length FromYards(double v){return s(this,v,YD,"YD");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToFeet(); //Variable "bar" being of type UnitOf.Length with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Length().FromMeters(1.25).ToFeet(); //One line conversion from 1.25 Meters to Feet
-        /// </summary>
-        public double ToAngstroms(){return c(A);}
-        public double ToAttometers(){return c(AM);}
-        public double ToBarleycorns(){return c(BC);}
-        public double ToCablesImperial(){return c(CBLIMP);}
-        public double ToCablesInternational(){return c(CBLIN);}
-        public double ToCablesUSCustomary(){return c(CBLUS);}
-        public double ToCaliber(){return c(CL);}
-        public double ToCentiinches(){return c(CIN);}
-        public double ToCentimeters(){return c(CM);}
-        public double ToChains(){return c(CH);}
-        public double ToCubits(){return c(CU);}
-        public double ToDecimeters(){return c(DM);}
-        public double ToDekameters(){return c(DAM);}
-        public double ToElls(){return c(ELL);}
-        public double ToExameters(){return c(EM);}
-        public double ToFathoms(){return c(FTM);}
-        public double ToFeet(){return c(FT);}
-        public double ToFemtometers(){return c(FM);}
-        public double ToFingers(){return c(FING);}
-        public double ToFurlongs(){return c(FUR);}
-        public double ToGigameters(){return c(GM);}
-        public double ToHands(){return c(HAND);}
-        public double ToHectometers(){return c(HM);}
-        public double ToInches(){return c(IN);}
-        public double ToKilometers(){return c(KM);}
-        public double ToKiloyards(){return c(KYD);}
-        public double ToLeagues(){return c(LEA);}
-        public double ToLightYears(){return c(LY);}
-        public double ToLinks(){return c(LNK);}
-        public double ToMegameters(){return c(MM);}
-        public double ToMeters(){return c(M);}
-        public double ToMicroinches(){return c(MUIN);}
-        public double ToMicrometers(){return c(MUM);}
-        public double ToMicrons(){return c(MURM);}
-        public double ToMiles(){return c(MI);}
-        public double ToMillimeters(){return c(MILM);}
-        public double ToNails(){return c(NAIL);}
-        public double ToNanometers(){return c(NM);}
-        public double ToNauticalLeaguesInternational(){return c(NLEAIN);}
-        public double ToNauticalLeaguesUK(){return c(NLEAUK);}
-        public double ToNauticalMilesInternational(){return c(NMIINT);}
-        public double ToNauticalMilesUK(){return c(NMIUK);}
-        public double ToNauticalMilesUSCustomary(){return c(NMIUS);}
-        public double ToPerches(){return c(PER);}
-        public double ToPetameters(){return c(PEM);}
-        public double ToPicometers(){return c(PM);}
-        public double ToPoles(){return c(POL);}
-        public double ToRods(){return c(RD);}
-        public double ToRopes(){return c(ROPE);}
-        public double ToSpans(){return c(SPAN);}
-        public double ToTerameters(){return c(TM);}
-        public double ToThousandthInches(){return c(TIN);}
-        public double ToYards(){return c(YD);}
-    }
-
-    [Serializable]
-    public struct O
-    {
+        #endregion
     }
 }

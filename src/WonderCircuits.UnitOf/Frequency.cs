@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.Frequency()
     /// 
     /// Ex: double foo = new UnitOf.Frequency().FromHertz(1.25).ToCyclesPerSecond(); //One line conversion from 1.25 Hertz to CyclesPerSecond
     /// </summary>
     [Serializable]
-    public class Frequency : ConverterBase{
-
+    public class Frequency : UnitConverterBase
+    {
         #region Constants
         internal static readonly double AHZ = 1e24;   //Attohertz 
         internal static readonly double CHZ = 1e8;    //Centihertz
@@ -32,69 +35,70 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double THZ = 1e-6;   //Terahertz
 
         #endregion
+
+        #region From Methods
+        public Frequency FromAttohertz(double v) { return From(v, AHZ, "AHZ"); }
+        public Frequency FromCentihertz(double v) { return From(v, CHZ, "CHZ"); }
+        public Frequency FromCyclesPerSecond(double v) { return From(v, CS, "CS"); }
+        public Frequency FromDecihertz(double v) { return From(v, DHZ, "DHZ"); }
+        public Frequency FromDekahertz(double v) { return From(v, DAHZ, "DAHZ"); }
+        public Frequency FromExahertz(double v) { return From(v, EHZ, "EHZ"); }
+        public Frequency FromFemtohertz(double v) { return From(v, FHZ, "FHZ"); }
+        public Frequency FromGigahertz(double v) { return From(v, GHZ, "GHZ"); }
+        public Frequency FromHectohertz(double v) { return From(v, HHZ, "HHZ"); }
+        public Frequency FromHertz(double v) { return From(v, HZ, "HZ"); }
+        public Frequency FromKilohertz(double v) { return From(v, KHZ, "KHZ"); }
+        public Frequency FromMegahertz(double v) { return From(v, MHZ, "MHZ"); }
+        public Frequency FromMicrohertz(double v) { return From(v, MUHZ, "MUHZ"); }
+        public Frequency FromMillihertz(double v) { return From(v, MIHZ, "MIHZ"); }
+        public Frequency FromNanohertz(double v) { return From(v, NHZ, "NHZ"); }
+        public Frequency FromPetahertz(double v) { return From(v, PEHZ, "PEHZ"); }
+        public Frequency FromPicohertz(double v) { return From(v, PHZ, "PHZ"); }
+        public Frequency FromRevolutionsPerDay(double v) { return From(v, RD, "RD"); }
+        public Frequency FromRevolutionsPerHour(double v) { return From(v, RH, "RH"); }
+        public Frequency FromRevolutionsPerMinute(double v) { return From(v, RM, "RM"); }
+        public Frequency FromRevolutionsPerSecond(double v) { return From(v, RS, "RS"); }
+        public Frequency FromTerahertz(double v) { return From(v, THZ, "THZ"); }
+
+        private Frequency From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
+        }
+        #endregion
+
+        #region To Methods
+        public double ToAttohertz() { return To(AHZ); }
+        public double ToCentihertz() { return To(CHZ); }
+        public double ToCyclesPerSecond() { return To(CS); }
+        public double ToDecihertz() { return To(DHZ); }
+        public double ToDekahertz() { return To(DAHZ); }
+        public double ToExahertz() { return To(EHZ); }
+        public double ToFemtohertz() { return To(FHZ); }
+        public double ToGigahertz() { return To(GHZ); }
+        public double ToHectohertz() { return To(HHZ); }
+        public double ToHertz() { return To(HZ); }
+        public double ToKilohertz() { return To(KHZ); }
+        public double ToMegahertz() { return To(MHZ); }
+        public double ToMicrohertz() { return To(MUHZ); }
+        public double ToMillihertz() { return To(MIHZ); }
+        public double ToNanohertz() { return To(NHZ); }
+        public double ToPetahertz() { return To(PEHZ); }
+        public double ToPicohertz() { return To(PHZ); }
+        public double ToRevolutionsPerDay() { return To(RD); }
+        public double ToRevolutionsPerHour() { return To(RH); }
+        public double ToRevolutionsPerMinute() { return To(RM); }
+        public double ToRevolutionsPerSecond() { return To(RS); }
+        public double ToTerahertz() { return To(THZ); }
+
         /// <summary>
         /// Method to perform all conversions within Frequency class.
         /// All "To" methods within Frequency use this method.
         /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
         }
-
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Frequency foo = new UnitOf.Frequency().FromHertz(1.25); //Variable "foo" will be able to convert 1.25 Hertz into any unit of Frequency
-        /// </summary>
-        public Frequency FromAttohertz(double v){return s(this,v,AHZ,"AHZ");}
-        public Frequency FromCentihertz(double v){return s(this,v,CHZ,"CHZ");}
-        public Frequency FromCyclesPerSecond(double v){return s(this,v,CS,"CS");}
-        public Frequency FromDecihertz(double v){return s(this,v,DHZ,"DHZ");}
-        public Frequency FromDekahertz(double v){return s(this,v,DAHZ,"DAHZ");}
-        public Frequency FromExahertz(double v){return s(this,v,EHZ,"EHZ");}
-        public Frequency FromFemtohertz(double v){return s(this,v,FHZ,"FHZ");}
-        public Frequency FromGigahertz(double v){return s(this,v,GHZ,"GHZ");}
-        public Frequency FromHectohertz(double v){return s(this,v,HHZ,"HHZ");}
-        public Frequency FromHertz(double v){return s(this,v,HZ,"HZ");}
-        public Frequency FromKilohertz(double v){return s(this,v,KHZ,"KHZ");}
-        public Frequency FromMegahertz(double v){return s(this,v,MHZ,"MHZ");}
-        public Frequency FromMicrohertz(double v){return s(this,v,MUHZ,"MUHZ");}
-        public Frequency FromMillihertz(double v){return s(this,v,MIHZ,"MIHZ");}
-        public Frequency FromNanohertz(double v){return s(this,v,NHZ,"NHZ");}
-        public Frequency FromPetahertz(double v){return s(this,v,PEHZ,"PEHZ");}
-        public Frequency FromPicohertz(double v){return s(this,v,PHZ,"PHZ");}
-        public Frequency FromRevolutionsPerDay(double v){return s(this,v,RD,"RD");}
-        public Frequency FromRevolutionsPerHour(double v){return s(this,v,RH,"RH");}
-        public Frequency FromRevolutionsPerMinute(double v){return s(this,v,RM,"RM");}
-        public Frequency FromRevolutionsPerSecond(double v){return s(this,v,RS,"RS");}
-        public Frequency FromTerahertz(double v){return s(this,v,THZ,"THZ");}
-
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToCyclesPerSecond(); //Variable "bar" being of type UnitOf.Frequency with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Frequency().FromHertz(1.25).ToCyclesPerSecond(); //One line conversion from 1.25 Hertz to CyclesPerSecond
-        /// </summary>
-        public double ToAttohertz(){return c(AHZ);}
-        public double ToCentihertz(){return c(CHZ);}
-        public double ToCyclesPerSecond(){return c(CS);}
-        public double ToDecihertz(){return c(DHZ);}
-        public double ToDekahertz(){return c(DAHZ);}
-        public double ToExahertz(){return c(EHZ);}
-        public double ToFemtohertz(){return c(FHZ);}
-        public double ToGigahertz(){return c(GHZ);}
-        public double ToHectohertz(){return c(HHZ);}
-        public double ToHertz(){return c(HZ);}
-        public double ToKilohertz(){return c(KHZ);}
-        public double ToMegahertz(){return c(MHZ);}
-        public double ToMicrohertz(){return c(MUHZ);}
-        public double ToMillihertz(){return c(MIHZ);}
-        public double ToNanohertz(){return c(NHZ);}
-        public double ToPetahertz(){return c(PEHZ);}
-        public double ToPicohertz(){return c(PHZ);}
-        public double ToRevolutionsPerDay(){return c(RD);}
-        public double ToRevolutionsPerHour(){return c(RH);}
-        public double ToRevolutionsPerMinute(){return c(RM);}
-        public double ToRevolutionsPerSecond(){return c(RS);}
-        public double ToTerahertz(){return c(THZ);}
+        #endregion
     }
 }

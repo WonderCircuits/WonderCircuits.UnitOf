@@ -1,12 +1,15 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
     /// <summary>
     /// UnitOf.ElectricCharge()
     /// 
     /// Ex: double foo = new UnitOf.ElectricCharge().FromCoulombs(1.25).ToAmpereHours(); //One line conversion from 1.25 Coulombs to AmpereHours
     /// </summary>
     [Serializable]
-    public class ElectricCharge : ConverterBase{
-
+    public class ElectricCharge : UnitConverterBase
+    {
         #region Constants
         internal static readonly double ABC = 1e5;                //Abcoulomb
         internal static readonly double AH = 1/0.0036;            //Ampere Hour
@@ -30,65 +33,62 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double STC = 2.99792457999957e15;//Statcoulomb
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within ElectricCharge class.
-        /// All "To" methods within ElectricCharge use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+
+        #region From Methods
+        public ElectricCharge FromAbcoulombs(double v) { return From(v, ABC, "ABC"); }
+        public ElectricCharge FromAmpereHours(double v) { return From(v, AH, "AH"); }
+        public ElectricCharge FromAmpereMinutes(double v) { return From(v, AM, "AM"); }
+        public ElectricCharge FromAmpereSeconds(double v) { return From(v, AS, "AS"); }
+        public ElectricCharge FromCoulombs(double v) { return From(v, C, "C"); }
+        public ElectricCharge FromEMUsOfCharge(double v) { return From(v, EMU, "EMU"); }
+        public ElectricCharge FromESUsOfCharge(double v) { return From(v, ESU, "ESU"); }
+        public ElectricCharge FromElectronCharge(double v) { return From(v, E, "E"); }
+        public ElectricCharge FromFaradVolts(double v) { return From(v, F, "F"); }
+        public ElectricCharge FromFaradayCarbon12(double v) { return From(v, FA12, "FA12"); }
+        public ElectricCharge FromFaradayChemistry(double v) { return From(v, FACH, "FACH"); }
+        public ElectricCharge FromFaradayPhysics(double v) { return From(v, FAPH, "FAPH"); }
+        public ElectricCharge FromFranklins(double v) { return From(v, FR, "FR"); }
+        public ElectricCharge FromKilocoulombs(double v) { return From(v, KC, "KC"); }
+        public ElectricCharge FromMegacoulombs(double v) { return From(v, MC, "MC"); }
+        public ElectricCharge FromMicrocoulombs(double v) { return From(v, MUC, "MUC"); }
+        public ElectricCharge FromMillicoulombs(double v) { return From(v, MILC, "MILC"); }
+        public ElectricCharge FromNanocoulombs(double v) { return From(v, NC, "NC"); }
+        public ElectricCharge FromPicocoulombs(double v) { return From(v, PC, "PC"); }
+        public ElectricCharge FromStatcoulombs(double v) { return From(v, STC, "STC"); }
+
+        private ElectricCharge From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
         }
+        #endregion
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.ElectricCharge foo = new UnitOf.ElectricCharge().FromCoulombs(1.25); //Variable "foo" will be able to convert 1.25 Coulombs into any unit of ElectricCharge
-        /// </summary>
-        public ElectricCharge FromAbcoulombs(double v){return s(this,v,ABC,"ABC");}
-        public ElectricCharge FromAmpereHours(double v){return s(this,v,AH,"AH");}
-        public ElectricCharge FromAmpereMinutes(double v){return s(this,v,AM,"AM");}
-        public ElectricCharge FromAmpereSeconds(double v){return s(this,v,AS,"AS");}
-        public ElectricCharge FromCoulombs(double v){return s(this,v,C,"C");}
-        public ElectricCharge FromEMUsOfCharge(double v){return s(this,v,EMU,"EMU");}
-        public ElectricCharge FromESUsOfCharge(double v){return s(this,v,ESU,"ESU");}
-        public ElectricCharge FromElectronCharge(double v){return s(this,v,E,"E");}
-        public ElectricCharge FromFaradVolts(double v){return s(this,v,F,"F");}
-        public ElectricCharge FromFaradayCarbon12(double v){return s(this,v,FA12,"FA12");}
-        public ElectricCharge FromFaradayChemistry(double v){return s(this,v,FACH,"FACH");}
-        public ElectricCharge FromFaradayPhysics(double v){return s(this,v,FAPH,"FAPH");}
-        public ElectricCharge FromFranklins(double v){return s(this,v,FR,"FR");}
-        public ElectricCharge FromKilocoulombs(double v){return s(this,v,KC,"KC");}
-        public ElectricCharge FromMegacoulombs(double v){return s(this,v,MC,"MC");}
-        public ElectricCharge FromMicrocoulombs(double v){return s(this,v,MUC,"MUC");}
-        public ElectricCharge FromMillicoulombs(double v){return s(this,v,MILC,"MILC");}
-        public ElectricCharge FromNanocoulombs(double v){return s(this,v,NC,"NC");}
-        public ElectricCharge FromPicocoulombs(double v){return s(this,v,PC,"PC");}
-        public ElectricCharge FromStatcoulombs(double v){return s(this,v,STC,"STC");}
+        #region To Methods
+        public double ToAbcoulombs() { return To(ABC); }
+        public double ToAmpereHours() { return To(AH); }
+        public double ToAmpereMinutes() { return To(AM); }
+        public double ToAmpereSeconds() { return To(AS); }
+        public double ToCoulombs() { return To(C); }
+        public double ToEMUsOfCharge() { return To(EMU); }
+        public double ToESUsOfCharge() { return To(ESU); }
+        public double ToElectronCharge() { return To(E); }
+        public double ToFaradVolts() { return To(F); }
+        public double ToFaradayCarbon12() { return To(FA12); }
+        public double ToFaradayChemistry() { return To(FACH); }
+        public double ToFaradayPhysics() { return To(FAPH); }
+        public double ToFranklins() { return To(FR); }
+        public double ToKilocoulombs() { return To(KC); }
+        public double ToMegacoulombs() { return To(MC); }
+        public double ToMicrocoulombs() { return To(MUC); }
+        public double ToMillicoulombs() { return To(MILC); }
+        public double ToNanocoulombs() { return To(NC); }
+        public double ToPicocoulombs() { return To(PC); }
+        public double ToStatcoulombs() { return To(STC); }
 
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToAmpereHours(); //Variable "bar" being of type UnitOf.ElectricCharge with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.ElectricCharge().FromCoulombs(1.25).ToAmpereHours(); //One line conversion from 1.25 Coulombs to AmpereHours
-        /// </summary>
-        public double ToAbcoulombs(){return c(ABC);}
-        public double ToAmpereHours(){return c(AH);}
-        public double ToAmpereMinutes(){return c(AM);}
-        public double ToAmpereSeconds(){return c(AS);}
-        public double ToCoulombs(){return c(C);}
-        public double ToEMUsOfCharge(){return c(EMU);}
-        public double ToESUsOfCharge(){return c(ESU);}
-        public double ToElectronCharge(){return c(E);}
-        public double ToFaradVolts(){return c(F);}
-        public double ToFaradayCarbon12(){return c(FA12);}
-        public double ToFaradayChemistry(){return c(FACH);}
-        public double ToFaradayPhysics(){return c(FAPH);}
-        public double ToFranklins(){return c(FR);}
-        public double ToKilocoulombs(){return c(KC);}
-        public double ToMegacoulombs(){return c(MC);}
-        public double ToMicrocoulombs(){return c(MUC);}
-        public double ToMillicoulombs(){return c(MILC);}
-        public double ToNanocoulombs(){return c(NC);}
-        public double ToPicocoulombs(){return c(PC);}
-        public double ToStatcoulombs(){return c(STC);}
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
+        }
+        #endregion
     }
 }

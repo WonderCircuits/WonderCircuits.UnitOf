@@ -1,4 +1,7 @@
-namespace WonderCircuits.UnitOf {
+using WonderCircuits.UnitOf.Common;
+
+namespace WonderCircuits.UnitOf
+{
 
     /// <summary>
     /// UnitOf.Volume()
@@ -6,7 +9,8 @@ namespace WonderCircuits.UnitOf {
     /// Ex: double foo = new UnitOf.Volume().FromLiters(1.25).ToCubicMeters(); //One line conversion from 1.25 Liters to CubicMeters
     /// </summary>
     [Serializable]
-    public class Volume : ConverterBase{
+    public class Volume : UnitConverterBase
+    {
         #region Constants
         internal static readonly double ACFTUS = 0.0008107083295205;  //Acre Foot (US)
         internal static readonly double ACIN = 0.009728558325479;     //Acre Inch
@@ -75,155 +79,152 @@ namespace WonderCircuits.UnitOf {
         internal static readonly double TUN = 1.048301795072;         //Tun
 
         #endregion
-        /// <summary>
-        /// Method to perform all conversions within Volume class.
-        /// All "To" methods within Volume use this method.
-        /// </summary>
-        private double c(double t){
-            return Conversion(t,me.t);
+
+        #region From Methods
+        public Volume FromAcreFeetUSSurvey(double v) { return From(v, ACFTUS, "ACFTUS"); }
+        public Volume FromAcreInches(double v) { return From(v, ACIN, "ACIN"); }
+        public Volume FromArceFeet(double v) { return From(v, ACFTO, "ACFTO"); }
+        public Volume FromAttoliters(double v) { return From(v, AL, "AL"); }
+        public Volume FromBarrelsOfOil(double v) { return From(v, BBLO, "BBLO"); }
+        public Volume FromBarrelsUK(double v) { return From(v, BBLUK, "BBLUK"); }
+        public Volume FromBarrelsUS(double v) { return From(v, BBLUS, "BBLUS"); }
+        public Volume FromBoardFeet(double v) { return From(v, FBM, "FBM"); }
+        public Volume FromCentiliters(double v) { return From(v, CL, "CL"); }
+        public Volume FromCords(double v) { return From(v, CORD, "CORD"); }
+        public Volume FromCubicCentimeters(double v) { return From(v, CM, "CM"); }
+        public Volume FromCubicDecimeters(double v) { return From(v, DM, "DM"); }
+        public Volume FromCubicFeet(double v) { return From(v, FT, "FT"); }
+        public Volume FromCubicInches(double v) { return From(v, IN, "IN"); }
+        public Volume FromCubicKilometers(double v) { return From(v, KM, "KM"); }
+        public Volume FromCubicMeters(double v) { return From(v, M, "M"); }
+        public Volume FromCubicMiles(double v) { return From(v, MI, "MI"); }
+        public Volume FromCubicMillimeters(double v) { return From(v, MM, "MM"); }
+        public Volume FromCubicYards(double v) { return From(v, YD, "YD"); }
+        public Volume FromCupsMetric(double v) { return From(v, CUPM, "CUPM"); }
+        public Volume FromCupsUK(double v) { return From(v, CUPUK, "CUPUK"); }
+        public Volume FromCupsUS(double v) { return From(v, CUPUS, "CUPUS"); }
+        public Volume FromDeciliters(double v) { return From(v, DL, "DL"); }
+        public Volume FromDecisteres(double v) { return From(v, DECI, "DECI"); }
+        public Volume FromDekaliters(double v) { return From(v, DAL, "DAL"); }
+        public Volume FromDekasteres(double v) { return From(v, DEKA, "DEKA"); }
+        public Volume FromDessertspoonsUK(double v) { return From(v, DSTSPNUK, "DSTSPNUK"); }
+        public Volume FromDessertspoonsUS(double v) { return From(v, DSTSPNUS, "DSTSPNUS"); }
+        public Volume FromDrops(double v) { return From(v, DROP, "DROP"); }
+        public Volume FromExaliters(double v) { return From(v, EL, "EL"); }
+        public Volume FromFemtoliters(double v) { return From(v, FL, "FL"); }
+        public Volume FromFluidOuncesUK(double v) { return From(v, FLOZUK, "FLOZUK"); }
+        public Volume FromFluidOuncesUS(double v) { return From(v, FLOZUS, "FLOZUS"); }
+        public Volume FromGallonsUK(double v) { return From(v, GALUK, "GALUK"); }
+        public Volume FromGallonsUS(double v) { return From(v, GALUS, "GALUS"); }
+        public Volume FromGigaliters(double v) { return From(v, GL, "GL"); }
+        public Volume FromGillsUK(double v) { return From(v, GILUK, "GILUK"); }
+        public Volume FromGillsUS(double v) { return From(v, GILUS, "GILUS"); }
+        public Volume FromHectoliters(double v) { return From(v, HL, "HL"); }
+        public Volume FromHogsheads(double v) { return From(v, HOG, "HOG"); }
+        public Volume FromHundredCubicFeet(double v) { return From(v, CCF, "CCF"); }
+        public Volume FromKiloliters(double v) { return From(v, KL, "KL"); }
+        public Volume FromLiters(double v) { return From(v, L, "L"); }
+        public Volume FromMegaliters(double v) { return From(v, ML, "ML"); }
+        public Volume FromMicroliters(double v) { return From(v, MUL, "MUL"); }
+        public Volume FromMilliliters(double v) { return From(v, MILL, "MILL"); }
+        public Volume FromMinimsUK(double v) { return From(v, MINIUK, "MINIUK"); }
+        public Volume FromMinimsUS(double v) { return From(v, MINIUS, "MINIUS"); }
+        public Volume FromNanoliters(double v) { return From(v, NL, "NL"); }
+        public Volume FromPetaliters(double v) { return From(v, PEL, "PEL"); }
+        public Volume FromPicoliters(double v) { return From(v, PL, "PL"); }
+        public Volume FromPintsUK(double v) { return From(v, PTUK, "PTUK"); }
+        public Volume FromPintsUS(double v) { return From(v, PTUS, "PTUS"); }
+        public Volume FromQuartsUK(double v) { return From(v, QTUK, "QTUK"); }
+        public Volume FromQuartsUS(double v) { return From(v, QTUS, "QTUS"); }
+        public Volume FromRegisterTons(double v) { return From(v, REGTON, "REGTON"); }
+        public Volume FromSteres(double v) { return From(v, ST, "ST"); }
+        public Volume FromTablespoonsMetric(double v) { return From(v, TBSPM, "TBSPM"); }
+        public Volume FromTablespoonsUK(double v) { return From(v, TBSPUK, "TBSPUK"); }
+        public Volume FromTablespoonsUS(double v) { return From(v, TBSPUS, "TBSPUS"); }
+        public Volume FromTeaspoonsMetric(double v) { return From(v, TSPM, "TSPM"); }
+        public Volume FromTeaspoonsUK(double v) { return From(v, TSPUK, "TSPUK"); }
+        public Volume FromTeaspoonsUS(double v) { return From(v, TSPUS, "TSPUS"); }
+        public Volume FromTeraliters(double v) { return From(v, TL, "TL"); }
+        public Volume FromTuns(double v) { return From(v, TUN, "TUN"); }
+
+        private Volume From(double v, double tt, string ts)
+        {
+            Store(v, tt, ts);
+            return this;
         }
+        #endregion
 
-        /// <summary>
-        /// "From" Methods
-        /// 
-        /// Ex: UnitOf.Volume foo = new UnitOf.Volume().FromLiters(1.25); //Variable "foo" will be able to convert 1.25 Liters into any unit of Volume
-        /// </summary>
-        public Volume FromAcreFeetUSSurvey(double v){return s(this,v,ACFTUS,"ACFTUS");}
-        public Volume FromAcreInches(double v){return s(this,v,ACIN,"ACIN");}
-        public Volume FromArceFeet(double v){return s(this,v,ACFTO,"ACFTO");}
-        public Volume FromAttoliters(double v){return s(this,v,AL,"AL");}
-        public Volume FromBarrelsOfOil(double v){return s(this,v,BBLO,"BBLO");}
-        public Volume FromBarrelsUK(double v){return s(this,v,BBLUK,"BBLUK");}
-        public Volume FromBarrelsUS(double v){return s(this,v,BBLUS,"BBLUS");}
-        public Volume FromBoardFeet(double v){return s(this,v,FBM,"FBM");}
-        public Volume FromCentiliters(double v){return s(this,v,CL,"CL");}
-        public Volume FromCords(double v){return s(this,v,CORD,"CORD");}
-        public Volume FromCubicCentimeters(double v){return s(this, v, CM, "CM");}
-        public Volume FromCubicDecimeters(double v){return s(this, v, DM, "DM");}
-        public Volume FromCubicFeet(double v){return s(this, v, FT, "FT");}
-        public Volume FromCubicInches(double v){return s(this, v, IN, "IN");}
-        public Volume FromCubicKilometers(double v){return s(this, v, KM, "KM");}
-        public Volume FromCubicMeters(double v){return s(this, v, M, "M");}
-        public Volume FromCubicMiles(double v){return s(this, v, MI, "MI");}
-        public Volume FromCubicMillimeters(double v){return s(this, v, MM, "MM");}
-        public Volume FromCubicYards(double v){return s(this, v, YD, "YD");}
-        public Volume FromCupsMetric(double v){return s(this,v,CUPM,"CUPM");}
-        public Volume FromCupsUK(double v){return s(this,v,CUPUK,"CUPUK");}
-        public Volume FromCupsUS(double v){return s(this,v,CUPUS,"CUPUS");}
-        public Volume FromDeciliters(double v){return s(this,v,DL,"DL");}
-        public Volume FromDecisteres(double v){return s(this,v,DECI,"DECI");}
-        public Volume FromDekaliters(double v){return s(this,v,DAL,"DAL");}
-        public Volume FromDekasteres(double v){return s(this,v,DEKA,"DEKA");}
-        public Volume FromDessertspoonsUK(double v){return s(this,v,DSTSPNUK,"DSTSPNUK");}
-        public Volume FromDessertspoonsUS(double v){return s(this,v,DSTSPNUS,"DSTSPNUS");}
-        public Volume FromDrops(double v){return s(this,v,DROP,"DROP");}
-        public Volume FromExaliters(double v){return s(this,v,EL,"EL");}
-        public Volume FromFemtoliters(double v){return s(this,v,FL,"FL");}
-        public Volume FromFluidOuncesUK(double v){return s(this,v,FLOZUK,"FLOZUK");}
-        public Volume FromFluidOuncesUS(double v){return s(this,v,FLOZUS,"FLOZUS");}
-        public Volume FromGallonsUK(double v){return s(this,v,GALUK,"GALUK");}
-        public Volume FromGallonsUS(double v){return s(this,v,GALUS,"GALUS");}
-        public Volume FromGigaliters(double v){return s(this,v,GL,"GL");}
-        public Volume FromGillsUK(double v){return s(this,v,GILUK,"GILUK");}
-        public Volume FromGillsUS(double v){return s(this,v,GILUS,"GILUS");}
-        public Volume FromHectoliters(double v){return s(this,v,HL,"HL");}
-        public Volume FromHogsheads(double v){return s(this,v,HOG,"HOG");}
-        public Volume FromHundredCubicFeet(double v){return s(this, v, CCF, "CCF");}
-        public Volume FromKiloliters(double v){return s(this,v,KL,"KL");}
-        public Volume FromLiters(double v){return s(this,v,L,"L");}
-        public Volume FromMegaliters(double v){return s(this,v,ML,"ML");}
-        public Volume FromMicroliters(double v){return s(this,v,MUL,"MUL");}
-        public Volume FromMilliliters(double v){return s(this,v,MILL,"MILL");}
-        public Volume FromMinimsUK(double v){return s(this,v,MINIUK,"MINIUK");}
-        public Volume FromMinimsUS(double v){return s(this,v,MINIUS,"MINIUS");}
-        public Volume FromNanoliters(double v){return s(this,v,NL,"NL");}
-        public Volume FromPetaliters(double v){return s(this,v,PEL,"PEL");}
-        public Volume FromPicoliters(double v){return s(this,v,PL,"PL");}
-        public Volume FromPintsUK(double v){return s(this,v,PTUK,"PTUK");}
-        public Volume FromPintsUS(double v){return s(this,v,PTUS,"PTUS");}
-        public Volume FromQuartsUK(double v){return s(this,v,QTUK,"QTUK");}
-        public Volume FromQuartsUS(double v){return s(this,v,QTUS,"QTUS");}
-        public Volume FromRegisterTons(double v){return s(this,v,REGTON,"REGTON");}
-        public Volume FromSteres(double v){return s(this,v,ST,"ST");}
-        public Volume FromTablespoonsMetric(double v){return s(this,v,TBSPM,"TBSPM");}
-        public Volume FromTablespoonsUK(double v){return s(this,v,TBSPUK,"TBSPUK");}
-        public Volume FromTablespoonsUS(double v){return s(this,v,TBSPUS,"TBSPUS");}
-        public Volume FromTeaspoonsMetric(double v){return s(this,v,TSPM,"TSPM");}
-        public Volume FromTeaspoonsUK(double v){return s(this,v,TSPUK,"TSPUK");}
-        public Volume FromTeaspoonsUS(double v){return s(this,v,TSPUS,"TSPUS");}
-        public Volume FromTeraliters(double v){return s(this,v,TL,"TL");}
-        public Volume FromTuns(double v){return s(this,v,TUN,"TUN");}
+        #region To Methods
+        public double ToAcreFeetUSSurvey() { return To(ACFTUS); }
+        public double ToAcreInches() { return To(ACIN); }
+        public double ToArceFeet() { return To(ACFTO); }
+        public double ToAttoliters() { return To(AL); }
+        public double ToBarrelsOfOil() { return To(BBLO); }
+        public double ToBarrelsUK() { return To(BBLUK); }
+        public double ToBarrelsUS() { return To(BBLUS); }
+        public double ToBoardFeet() { return To(FBM); }
+        public double ToCentiliters() { return To(CL); }
+        public double ToCords() { return To(CORD); }
+        public double ToCubicCentimeters() { return To(CM); }
+        public double ToCubicDecimeters() { return To(DM); }
+        public double ToCubicFeet() { return To(FT); }
+        public double ToCubicInches() { return To(IN); }
+        public double ToCubicKilometers() { return To(KM); }
+        public double ToCubicMeters() { return To(M); }
+        public double ToCubicMiles() { return To(MI); }
+        public double ToCubicMillimeters() { return To(MM); }
+        public double ToCubicYards() { return To(YD); }
+        public double ToCupsMetric() { return To(CUPM); }
+        public double ToCupsUK() { return To(CUPUK); }
+        public double ToCupsUS() { return To(CUPUS); }
+        public double ToDeciliters() { return To(DL); }
+        public double ToDecisteres() { return To(DECI); }
+        public double ToDekaliters() { return To(DAL); }
+        public double ToDekasteres() { return To(DEKA); }
+        public double ToDessertspoonsUK() { return To(DSTSPNUK); }
+        public double ToDessertspoonsUS() { return To(DSTSPNUS); }
+        public double ToDrops() { return To(DROP); }
+        public double ToExaliters() { return To(EL); }
+        public double ToFemtoliters() { return To(FL); }
+        public double ToFluidOuncesUK() { return To(FLOZUK); }
+        public double ToFluidOuncesUS() { return To(FLOZUS); }
+        public double ToGallonsUK() { return To(GALUK); }
+        public double ToGallonsUS() { return To(GALUS); }
+        public double ToGigaliters() { return To(GL); }
+        public double ToGillsUK() { return To(GILUK); }
+        public double ToGillsUS() { return To(GILUS); }
+        public double ToHectoliters() { return To(HL); }
+        public double ToHogsheads() { return To(HOG); }
+        public double ToHundredCubicFeet() { return To(CCF); }
+        public double ToKiloliters() { return To(KL); }
+        public double ToLiters() { return To(L); }
+        public double ToMegaliters() { return To(ML); }
+        public double ToMicroliters() { return To(MUL); }
+        public double ToMilliliters() { return To(MILL); }
+        public double ToMinimsUK() { return To(MINIUK); }
+        public double ToMinimsUS() { return To(MINIUS); }
+        public double ToNanoliters() { return To(NL); }
+        public double ToPetaliters() { return To(PEL); }
+        public double ToPicoliters() { return To(PL); }
+        public double ToPintsUK() { return To(PTUK); }
+        public double ToPintsUS() { return To(PTUS); }
+        public double ToQuartsUK() { return To(QTUK); }
+        public double ToQuartsUS() { return To(QTUS); }
+        public double ToRegisterTons() { return To(REGTON); }
+        public double ToSteres() { return To(ST); }
+        public double ToTablespoonsMetric() { return To(TBSPM); }
+        public double ToTablespoonsUK() { return To(TBSPUK); }
+        public double ToTablespoonsUS() { return To(TBSPUS); }
+        public double ToTeaspoonsMetric() { return To(TSPM); }
+        public double ToTeaspoonsUK() { return To(TSPUK); }
+        public double ToTeaspoonsUS() { return To(TSPUS); }
+        public double ToTeraliters() { return To(TL); }
+        public double ToTuns() { return To(TUN); }
 
-        /// <summary>
-        /// "To" Methods
-        /// 
-        /// Ex 1: double bar = foo.ToCubicMeters(); //Variable "bar" being of type UnitOf.Volume with "From" value already assigned
-        /// Ex 2: double foobar = new UnitOf.Volume().FromLiters(1.25).ToCubicMeters(); //One line conversion from 1.25 Liters to CubicMeters
-        /// </summary>
-        public double ToAcreFeetUSSurvey(){return c(ACFTUS);}
-        public double ToAcreInches(){return c(ACIN);}
-        public double ToArceFeet(){return c(ACFTO);}
-        public double ToAttoliters(){return c(AL);}
-        public double ToBarrelsOfOil(){return c(BBLO);}
-        public double ToBarrelsUK(){return c(BBLUK);}
-        public double ToBarrelsUS(){return c(BBLUS);}
-        public double ToBoardFeet(){return c(FBM);}
-        public double ToCentiliters(){return c(CL);}
-        public double ToCords(){return c(CORD);}
-        public double ToCubicCentimeters(){return c(CM);}
-        public double ToCubicDecimeters(){return c(DM);}
-        public double ToCubicFeet(){return c(FT);}
-        public double ToCubicInches(){return c(IN);}
-        public double ToCubicKilometers(){return c(KM);}
-        public double ToCubicMeters(){return c(M);}
-        public double ToCubicMiles(){return c(MI);}
-        public double ToCubicMillimeters(){return c(MM);}
-        public double ToCubicYards(){return c(YD);}
-        public double ToCupsMetric(){return c(CUPM);}
-        public double ToCupsUK(){return c(CUPUK);}
-        public double ToCupsUS(){return c(CUPUS);}
-        public double ToDeciliters(){return c(DL);}
-        public double ToDecisteres(){return c(DECI);}
-        public double ToDekaliters(){return c(DAL);}
-        public double ToDekasteres(){return c(DEKA);}
-        public double ToDessertspoonsUK(){return c(DSTSPNUK);}
-        public double ToDessertspoonsUS(){return c(DSTSPNUS);}
-        public double ToDrops(){return c(DROP);}
-        public double ToExaliters(){return c(EL);}
-        public double ToFemtoliters(){return c(FL);}
-        public double ToFluidOuncesUK(){return c(FLOZUK);}
-        public double ToFluidOuncesUS(){return c(FLOZUS);}
-        public double ToGallonsUK(){return c(GALUK);}
-        public double ToGallonsUS(){return c(GALUS);}
-        public double ToGigaliters(){return c(GL);}
-        public double ToGillsUK(){return c(GILUK);}
-        public double ToGillsUS(){return c(GILUS);}
-        public double ToHectoliters(){return c(HL);}
-        public double ToHogsheads(){return c(HOG);}
-        public double ToHundredCubicFeet(){return c(CCF);}
-        public double ToKiloliters(){return c(KL);}
-        public double ToLiters(){return c(L);}
-        public double ToMegaliters(){return c(ML);}
-        public double ToMicroliters(){return c(MUL);}
-        public double ToMilliliters(){return c(MILL);}
-        public double ToMinimsUK(){return c(MINIUK);}
-        public double ToMinimsUS(){return c(MINIUS);}
-        public double ToNanoliters(){return c(NL);}
-        public double ToPetaliters(){return c(PEL);}
-        public double ToPicoliters(){return c(PL);}
-        public double ToPintsUK(){return c(PTUK);}
-        public double ToPintsUS(){return c(PTUS);}
-        public double ToQuartsUK(){return c(QTUK);}
-        public double ToQuartsUS(){return c(QTUS);}
-        public double ToRegisterTons(){return c(REGTON);}
-        public double ToSteres(){return c(ST);}
-        public double ToTablespoonsMetric(){return c(TBSPM);}
-        public double ToTablespoonsUK(){return c(TBSPUK);}
-        public double ToTablespoonsUS(){return c(TBSPUS);}
-        public double ToTeaspoonsMetric(){return c(TSPM);}
-        public double ToTeaspoonsUK(){return c(TSPUK);}
-        public double ToTeaspoonsUS(){return c(TSPUS);}
-        public double ToTeraliters(){return c(TL);}
-        public double ToTuns(){return c(TUN);}
+        private double To(double t)
+        {
+            return Conversion(t, Varaibles.FromConstant);
+        }
+        #endregion
     }
 }
